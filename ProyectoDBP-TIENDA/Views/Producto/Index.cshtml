@@ -1,0 +1,55 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbProducto
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Formulario.css" />
+</head>
+<h1>AGREGAR PRODUCTO</h1>
+<html>
+<body>
+    <form asp-controller="Producto" asp-action="Grabar" method="post">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Id</label>
+            <input asp-for="IdPro" class="form-control" id="formGroupExampleInput" placeholder="Id">
+            <span asp-validation-for="IdPro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Descripcion</label>
+            <input asp-for="DesPro" class="form-control" id="formGroupExampleInput2" placeholder="Descripcion">
+            <span asp-validation-for="DesPro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Precio del producto</label>
+            <input asp-for="PrePro" class="form-control" id="formGroupExampleInput2" placeholder="Precio">
+            <span asp-validation-for="PrePro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Stock actual</label>
+            <input asp-for="StkAct" class="form-control" id="formGroupExampleInput2" placeholder="Stock actual">
+            <span asp-validation-for="StkAct" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Stock minimo</label>
+            <input asp-for="StkMin" class="form-control" id="formGroupExampleInput2" placeholder="Stock minimo">
+            <span asp-validation-for="StkMin" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Categoria de producto</label>
+            <input asp-for="CatePro" class="form-control" id="formGroupExampleInput2" placeholder="Categoria de producto">
+            <span asp-validation-for="CatePro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="Grabar" data-toggle="modal" data-target="#exampleModal">Grabar</button>
+        </div>
+    </form>
+</body>
+</html>

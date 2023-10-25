@@ -1,0 +1,26 @@
+﻿button {
+    background-color: red;
+    padding: 40px;
+    position: center;
+    border: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px 5px 5px 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: darkred;
+    }
+
+    button.Eliminar {
+        position: relative;
+        top: -45px;
+        right: -900px;
+        width: 40px;
+        padding: 10px;
+        border:10px;
+    }

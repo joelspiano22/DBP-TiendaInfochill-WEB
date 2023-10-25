@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="~/css/Login.css">
+        <title>Panel de Productos de UCHILL</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            .client-panel {
+                text-align: center;
+            }
+
+            .big-text {
+                font-size: 36px;
+                font-weight: bold;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-around;
+                margin-top: 20px;
+            }
+
+            .client-button {
+                font-size: 20px;
+                background-color: #007bff;
+                color: #fff;
+                padding: 15px 25px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .client-button:hover {
+                    background-color: #0056b3;
+                }
+        </style>
+    </head>
+    <div class="client-panel">
+        <div class="big-text">PRODUCTOS</div>
+        <div class="button-container">
+            <form action="/Producto/Agregar" method="get">
+                <button class="client-button" type="submit">AGREGAR</button>
+            </form>
+            <form action="/Producto/Listar" method="get">
+                <button class="client-button" type="submit">LISTAR</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

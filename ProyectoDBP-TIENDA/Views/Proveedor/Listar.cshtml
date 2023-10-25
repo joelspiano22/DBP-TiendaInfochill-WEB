@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TbProveedor>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Tablas.css" />
+    @*<link rel="stylesheet" href="~/css/Buscar.css" />*@
+</head>
+<html>
+<body>
+    <h1>LISTADO DE PROVEEDOR REGISTRADOS</h1>
+    <h2>
+        Buscar<input class="form-control" id="myInput" type="text" placeholder="Buscar..." />
+        <br />
+    </h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td scope="col">Codigo Proveedor</td>
+                <td scope="col">Razon Social</td>
+                <td scope="col">Telefono</td>
+                <td scope="col">Direccion</td>
+                <td scope="col">Repartidor</td>
+                <td scope="col">Editar</td>
+                <td scope="col">Eliminar</td>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CodProveedor</td>
+                    <td>@item.RazSocial</td>
+                    <td>@item.TlfProveedor</td>
+                    <td>@item.DirProveedor</td>
+                    <td>@item.RepVenta</td>
+                    <td><a asp-action="Edit" asp-route-id="@item.CodProveedor" class="btn btn-primary">Editar</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.CodProveedor" class="btn btn-primary">Eliminar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

@@ -1,0 +1,53 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbProveedor
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Formulario.css" />
+</head>
+<h1>EDITAR PROVEEDOR</h1>
+<html>
+<body>
+    <form asp-controller="Proveedor" asp-action="EditDetails" method="post">
+        <!--ID-->
+        <div class="form-group">
+            <label for="formGroupExampleInput">Id</label>
+            <input asp-for="CodProveedor" class="form-control" id="formGroupExampleInput" placeholder="Codigo Proveedor">
+            <span asp-validation-for="CodProveedor" class="text-danger"></span>
+        </div>
+        <!--Razon Social-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Razon Social</label>
+            <input asp-for="RazSocial" class="form-control" id="formGroupExampleInput2" placeholder="Razon Social">
+            <span asp-validation-for="RazSocial" class="text-danger"></span>
+        </div>
+        <!--DIRECCION-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Direccion</label>
+            <input asp-for="DirProveedor" class="form-control" id="formGroupExampleInput2" placeholder="Direccion">
+            <span asp-validation-for="DirProveedor" class="text-danger"></span>
+        </div>
+        <!--TELEFONO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Telefono</label>
+            <input asp-for="TlfProveedor" class="form-control" id="formGroupExampleInput2" placeholder="Telefono">
+            <span asp-validation-for="TlfProveedor" class="text-danger"></span>
+        </div>
+        <!--REPARTIDOR-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Repartidor</label>
+            <input asp-for="RepVenta" class="form-control" id="formGroupExampleInput2" placeholder="Repartidor">
+            <span asp-validation-for="RepVenta" class="text-danger"></span>
+        </div>
+        <!--BOTON-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="editar" data-toggle="modal" data-target="#exampleModal">Modificar</button>
+        </div>
+
+    </form>
+
+
+</body>
+</html>

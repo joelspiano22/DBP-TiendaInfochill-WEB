@@ -1,0 +1,67 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbCliente
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Formulario.css" />
+</head>
+<h1>AGREGAR CLIENTE</h1>
+<html>
+
+<body>
+    <form asp-controller="Cliente" asp-action="Grabar" method="post">
+        <!--ID-->
+        <div class="form-group">
+            <label for="formGroupExampleInput">Id</label>
+            <input asp-for="CodCliente" class="form-control" id="formGroupExampleInput" placeholder="Id">
+            <span asp-validation-for="CodCliente" class="text-danger"></span>
+        </div>
+        <!--NOMBRE-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Nombre</label>
+            <input asp-for="NomCli" class="form-control" id="formGroupExampleInput2" placeholder="Nombre">
+            <span asp-validation-for="NomCli" class="text-danger"></span>
+        </div>
+        <!--APELLIDO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Apellido</label>
+            <input asp-for="ApeCli" class="form-control" id="formGroupExampleInput2" placeholder="Apellido">
+            <span asp-validation-for="ApeCli" class="text-danger"></span>
+        </div>
+        <!--DNI-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Dni</label>
+            <input asp-for="DniCli" class="form-control" id="formGroupExampleInput2" placeholder="Dni">
+            <span asp-validation-for="DniCli" class="text-danger"></span>
+        </div>
+        <!--TELEFONO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Telefono</label>
+            <input asp-for="TlfCli" class="form-control" id="formGroupExampleInput2" placeholder="Telefono">
+            <span asp-validation-for="TlfCli" class="text-danger"></span>
+        </div>
+        <!--CORREO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Correo</label>
+            <input asp-for="CorreoCli" class="form-control" id="formGroupExampleInput2" placeholder="Correo">
+            <span asp-validation-for="CorreoCli" class="text-danger"></span>
+        </div>
+        <!--ESTADO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Estado</label>
+            <input asp-for="Estado" class="form-control" id="formGroupExampleInput2" placeholder="Estado">
+            <span asp-validation-for="Estado" class="text-danger"></span>
+        </div>
+        <!--BOTON-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="grabar" data-toggle="modal" data-target="#exampleModal">Grabar</button>
+        </div>
+
+    </form>
+
+
+</body>
+</html>
+

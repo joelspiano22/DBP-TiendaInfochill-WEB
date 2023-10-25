@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Login.css"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .admin-panel {
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .admin-button {
+            font-size: 24px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .admin-button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>Panel de Administrador, ¡BIENVENIDO! </h1>
+        <div class="button-container">
+            <form id="clientes" action="/clientes" method="get">
+                <button class="admin-button" type="submit">Clientes</button>
+            </form>
+            <form id="productos"  action="/productos" method="get">
+                <button class="admin-button" type="submit">Productos</button>
+            </form>
+            <form id="proveedores"  action="/proveedores" method="get">
+                <button class="admin-button" type="submit">Proveedores</button>
+            </form>
+            <form id="trabajadores" action="/trabajadores" method="get">
+                <button class="admin-button" type="submit">Trabajadores</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    // Obtén el formulario por su id
+    const clientes = document.getElementById('clientes');
+    const productos = document.getElementById('productos');
+    const proveedores = document.getElementById('proveedores');
+    const trabajadores = document.getElementById('trabajadores');
+
+   // Agrega un evento para escuchar el envío del formulario
+   clientes.addEventListener('submit', function (e) {
+       // Evita el envío del formulario predeterminado
+       e.preventDefault();
+
+       // Redirige a la página de producto/carrito
+       window.location.href = '/Admin/vistaClientes';
+       });
+
+        // Agrega un evento para escuchar el envío del formulario
+        productos.addEventListener('submit', function (R) {
+            // Evita el envío del formulario predeterminado
+            R.preventDefault();
+
+            // Redirige a la página de producto/carrito
+        window.location.href = '/Admin/vistaProductos';
+            });
+
+        // Agrega un evento para escuchar el envío del formulario
+        proveedores.addEventListener('submit', function (T) {
+                // Evita el envío del formulario predeterminado
+                T.preventDefault();
+
+                // Redirige a la página de producto/carrito
+        window.location.href = '/Admin/vistaProveedores';
+                });
+
+                // Agrega un evento para escuchar el envío del formulario
+           trabajadores.addEventListener('submit', function (Y) {
+               // Evita el envío del formulario predeterminado
+               Y.preventDefault();
+
+       // Redirige a la página de producto/carrito
+        window.location.href = '/Admin/vistaTrabajadores';
+   });
+</script>
