@@ -1,5 +1,7 @@
 using ProyectoDBP_TIENDA.Service.Interface;
 using ProyectoDBP_TIENDA.Service.Repository;
+using ProyectoDBP_TIENDA.Services.Interface;
+using ProyectoDBP_TIENDA.Services.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.Add(new ServiceDescriptor(typeof(IUsuario), new UsuarioReposito
 builder.Services.Add(new ServiceDescriptor(typeof(IProducto), new ProductoRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ICliente), new ClienteRepository()));
+builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Admin}/{action=Index}/{id?}");
+    pattern: "{controller=Producto}/{action=Carrito}/{id?}");
 
 app.Run();
