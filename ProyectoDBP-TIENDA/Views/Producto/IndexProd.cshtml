@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TbProducto>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<body>
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="card m-4" style="min-width:auto;max-width:30.5%">
+                <div class="card-header">
+                    <h3>@item.DesPro</h3>
+                    <h3>@item.PrePro</h3>
+                    <h3>@item.StkAct</h3>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

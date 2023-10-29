@@ -1,0 +1,49 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbUsuario
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+    <meta charset="UFT-8">
+    <title>Login Infosil</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Login.css">
+
+</head>
+
+<body>
+    <div class="box">
+        <span class="border"></span>
+        <form class="form-signin" action="/Usuario/Validar" method="post">
+            <img src="~/css/logo usil.png" />
+            <h2>Inicie Sesión</h2>
+
+            <!----------------------------------SIGN IN------------------------------------------->
+            
+            <div class="inputBox">
+            <span>Nombre de usuario</span>
+            <input asp-for="CodCliente" type="text"  id="Nombre de usuario" />
+            <i></i>
+            </div>
+
+            <!----------------------------------CONTRASEÑA------------------------------------------->
+            <div class="inputBox">
+            <span>Contraseña</span>
+            <input asp-for="ContraUsu" type="password" id="Contraseña" />
+            <i></i>
+            </div>
+
+            <!------------------------------LINKS OLVIDO CONTRASEÑA/ REGISTRATE----------------------->
+            <div class="links">
+                <a href="#">¿Olvidaste tu contraseña? </a>
+
+                <span><a href="/Usuario/ValidarCodigo">Registrate</a></span>
+            </div>
+            <!------------------------------BOTON ENTRAR------------------------------------------->
+            <input type="submit" style="--clr:#fbff00" value="Entrar" aria-hidden="true">
+
+        </form>
+    </div> <!-- /box -->
+</body>

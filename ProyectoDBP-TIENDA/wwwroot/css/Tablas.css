@@ -1,20 +1,24 @@
-﻿html,
+﻿* {
+    font-family: 'calibri';
+}
+
+html,
 body {
     height: 100%;
 }
 
 body {
     margin: 0;
-    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    background: #2c3e50;
     font-family: Arial;
     font-weight: 100;
 }
 
 .container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 40%;
+    transform: translate(-40%, -40%);
 }
 
 
@@ -22,7 +26,89 @@ table {
     width: 800px;
     border-collapse: collapse;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 7px 13px 37px #000;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+* {
+    font-family: 'calibri';
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #2c3e50;
+    font-family: Arial;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-40%, -40%);
+}
+
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 7px 13px 37px #000;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+* {
+    font-family: 'calibri';
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #2c3e50;
+    font-family: Arial;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-40%, -40%);
+}
+
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 7px 13px 37px #000;
+}
+
+h1, h2 {
+    margin-bottom: 10px;
+    color: #fff;
 }
 
 th,
@@ -46,16 +132,10 @@ thead {
 }
 
 tbody {
-    tr
-
-{
-    &:hover
-
-{
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-}
+
 
 td {
     position: relative;
@@ -71,10 +151,6 @@ td {
     right: 0;
     top: -9999px;
     bottom: -9999px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: #34495e;
     z-index: -1;
-}
-
-}
-}
 }

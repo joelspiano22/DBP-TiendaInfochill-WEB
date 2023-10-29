@@ -1,7 +1,9 @@
-﻿@model IEnumerable<EntregaSemana8.Models.Carrito>
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TemporalVenta>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@{
+}
 <html>
 <body>
     <h1>Productos Agregados al Carrito</h1>
@@ -19,12 +21,11 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.IdPro</td>
+                    <td>@item.CodPro</td>
                     <td>@item.DesPro</td>
                     <td>@item.PrePro</td>
-                    <td>@item.StkAct</td>
-                    <td scope="col"><input type="number" id="cant @i" value="" placeholder="cantidad" runat="server" /></td>
-                    <td scope="col"><a onclick="calcular(@i)">Pagar</a></td> <!--Eliminar posiblemente en video 2-3 -->
+                    <td>@item.StkPro</td>
+                    <td>@item.cantidad</td>
                 </tr>
             }
         </tbody>

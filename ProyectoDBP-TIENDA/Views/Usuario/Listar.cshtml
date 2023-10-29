@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TbUsuario>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Tablas.css" />
+</head>
+<html>
+<body>
+    <h1>LISTADO DE USUARIOS REGISTRADOS</h1>
+    <h2>
+        Buscar<input class="form-control" id="myInput" type="text" placeholder="Buscar..." />
+        <br />
+    </h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td scope="col">Codigo Cliente</td>
+                <td scope="col">Contraseña</td>
+
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CodCliente</td>
+                    <td>@item.ContraUsu</td>
+
+                    <td><a asp-action="Edit" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Editar</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Eliminar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

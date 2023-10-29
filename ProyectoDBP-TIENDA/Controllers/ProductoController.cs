@@ -27,6 +27,20 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View();
         }
 
+        public IActionResult IndexProd()
+        {
+            return View(obj.GetAllProductos());
+        }
+        public IActionResult Comprar(string cod)
+        {
+            ViewData["codigo"] = obj.GetProducto(cod).IdPro;
+            ViewData["descripcion"] = obj.GetProducto(cod).DesPro;
+            ViewData["precio"] = obj.GetProducto(cod).PrePro;
+            ViewData["stock"] = obj.GetProducto(cod).StkAct;
+
+            return View();
+        }
+
 
         [Route("producto/listar")]
         public IActionResult Listar()

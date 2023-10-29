@@ -1,0 +1,31 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbUsuario
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html Lang="en">
+<head>
+    <meta charset="UFT-8">
+    <title>Validar</title>
+    <link rel="stylesheet" type="text/css" href="~/css/validar.css">
+
+</head>
+
+<body>
+
+    <div class="box">
+        <span class="border"></span>
+        <form class="form-signin" action="/Usuario/Validar" method="post">
+            <h2>Validar Código Alumno</h2>
+            <div class="inputBox">
+                <input asp-for="CodCliente" type="text" id="Nombre de usuario" />
+                <i></i>
+            </div>
+            <!------------------------------BOTON Validar------------------------------------------->
+            <input type="submit" style="--clr:#fbff00" value="Entrar" aria-hidden="true">
+
+        </form>
+    </div> <!-- /box -->
+</body>
