@@ -15,6 +15,8 @@ public partial class BdInfochill : DbContext
     {
     }
 
+    public virtual DbSet<TbAdmin> TbAdmins { get; set; }
+
     public virtual DbSet<TbAula> TbAulas { get; set; }
 
     public virtual DbSet<TbCliente> TbClientes { get; set; }
@@ -35,13 +37,30 @@ public partial class BdInfochill : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=JOELSPIANO\\SQLEXPRESS01;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-JOELSPI\\SQLEXPRESS;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<TbAdmin>(entity =>
+        {
+            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE5E0A731FE");
+
+            entity.ToTable("TB_ADMIN");
+
+            entity.Property(e => e.IdAdmin).HasColumnName("idAdmin");
+            entity.Property(e => e.CodAdmin)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("codAdmin");
+            entity.Property(e => e.PassAdmin)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("passAdmin");
+        });
+
         modelBuilder.Entity<TbAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD8B70F5CB7");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD8D8DB8F77");
 
             entity.ToTable("TB_AULA");
 
@@ -72,7 +91,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbCliente>(entity =>
         {
-            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E924D97856F");
+            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E92D2623C5E");
 
             entity.ToTable("TB_CLIENTE");
 
@@ -109,7 +128,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD842D3B17B");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD890980A65");
 
             entity.ToTable("TB_DETALLE_AULA");
 
@@ -140,7 +159,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleCompra>(entity =>
         {
-            entity.HasKey(e => new { e.NumOco, e.IdPro }).HasName("PK__TB_DETAL__B4052689E0D3B19A");
+            entity.HasKey(e => new { e.NumOco, e.IdPro }).HasName("PK__TB_DETAL__B40526891C71961C");
 
             entity.ToTable("TB_DETALLE_COMPRA");
 
@@ -169,7 +188,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleFactura>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_DETAL__3D795B2721A2B175");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_DETAL__3D795B27AA527F10");
 
             entity.ToTable("TB_DETALLE_FACTURA");
 
@@ -191,7 +210,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbOrdenCompra>(entity =>
         {
-            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33B57BE3B1E");
+            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33B7C1313A3");
 
             entity.ToTable("TB_ORDEN_COMPRA");
 
@@ -225,7 +244,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProducto>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B2728D48B30");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27559F5240");
 
             entity.ToTable("TB_PRODUCTO");
 
@@ -251,7 +270,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProveedor>(entity =>
         {
-            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FBC88601F6");
+            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB0F054386");
 
             entity.ToTable("TB_PROVEEDOR");
 
