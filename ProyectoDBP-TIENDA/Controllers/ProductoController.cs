@@ -82,7 +82,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         public IActionResult ProductoPrincipal()
         {
-            return View();
+            return View(obj.GetAllProductos());
         }
 
     }
