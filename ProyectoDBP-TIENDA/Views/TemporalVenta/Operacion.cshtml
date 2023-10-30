@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TemporalVenta>
+
+<head>
+    <link rel="stylesheet" href="~/css/Tablas.css" />
+</head>
+<html>
+
+<body>
+    <h1>FACTURA DEL CLIENTE</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdPro</td>
+                    <td>@item.DesPro</td>
+                    <td>@item.PrePro</td>
+                    <td>@item.cantidad</td>
+                    <td>@(item.PrePro * item.cantidad)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Total a Pagar: $@(Model.Sum(item => item.PrePro * item.cantidad))</h2>
+    <p>Gracias por su compra.</p>
+</body>
+
+</html>
