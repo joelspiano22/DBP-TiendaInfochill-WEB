@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                 </ul>
-                <form action="/TemporalVenta/VerCarrito" method="get" class="d-flex">
+                <form action="/TemporalVenta/VerCarrito" method="get" >
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
@@ -80,13 +80,14 @@
                     <h3>@item.StkAct</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-action="VerProducto" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
+                    <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
                 </div>
             </div>
         }
     </div>
 </body>
 </html>
+
 <script>
     $(document).ready(function () {
         $("#myInput").on("keyup", function () {
@@ -96,12 +97,4 @@
             });
         });
     });
-    const carrito = document.getElementById('carrito');
-    carrito.addEventListener('click', function (e) {
-        // Evita el envío del formulario predeterminado
-        e.preventDefault();
-        // Redirige a la página de producto/VerProducto
-        window.location.href = '/Producto/Carrito';
-    });
-
 </script>

@@ -17,11 +17,6 @@ namespace ProyectoDBP_TIENDA.Controllers
            return View();
             //return View();
         }
-        public IActionResult VerProducto()
-        {
-            return View();
-            
-        }
         public IActionResult Carrito()
         {
             return View();
@@ -31,16 +26,16 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(obj.GetAllProductos());
         }
-        public IActionResult Comprar(string cod)
+        public IActionResult Comprar(string id)
         {
-            ViewData["codigo"] = obj.GetProducto(cod).IdPro;
-            ViewData["descripcion"] = obj.GetProducto(cod).DesPro;
-            ViewData["precio"] = obj.GetProducto(cod).PrePro;
-            ViewData["stock"] = obj.GetProducto(cod).StkAct;
+            ViewData["codigo"] = obj.GetProducto(id).IdPro;
+            ViewData["DesPro"] = obj.GetProducto(id).DesPro;
+            ViewData["PrePro"] = obj.GetProducto(id).PrePro;
+            ViewData["StkAct"] = obj.GetProducto(id).StkAct;
+
 
             return View();
         }
-
 
         [Route("producto/listar")]
         public IActionResult Listar()

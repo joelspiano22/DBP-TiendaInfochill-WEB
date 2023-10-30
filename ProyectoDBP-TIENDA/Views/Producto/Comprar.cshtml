@@ -12,13 +12,13 @@
     <form asp-controller="TemporalVenta" asp-action="Index" method="post">
         <input asp-for="IdPro" type="hidden" class="form-control" value="@ViewData["codigo"]"/>
         <label for="formGroupExampleInput">Descripcion</label>
-        <input asp-for="DesPro" type="text" class="form-control" placeholder="Descripcion del producto" value="@ViewData["descripcion"]"/>
+        <input asp-for="DesPro" type="text" class="form-control" placeholder="Descripcion del producto" value="@ViewData["DesPro"]" readonly />
         <label for="formGroupExampleInput">Precio</label>
-        <input asp-for="PrePro" type="text" class="form-control" placeholder="Precio del producto" value="@ViewData["precio"]" />
+        <input asp-for="PrePro" type="text" class="form-control" placeholder="Precio del producto" value="@ViewData["PrePro"]" readonly />
         <label for="formGroupExampleInput">Stock</label>
-        <input asp-for="StkAct" type="number" class="form-control" placeholder="Precio del producto" value="@ViewData["stock"]" />
+        <input asp-for="StkAct" type="number" class="form-control" placeholder="Precio del producto" value="@ViewData["StkAct"]" readonly />
         <label for="formGroupExampleInput">Cantidad</label>
-        <input asp-for="cantidad" type="number" class="form-control" placeholder="Cantidad de productos" />
+        <input asp-for="cantidad" type="number" class="form-control" placeholder="Cantidad de productos" value="1" />
         <input type="submit" class="btn btn-primary" value="Agregar al carrito" />
     </form>
 </body>
