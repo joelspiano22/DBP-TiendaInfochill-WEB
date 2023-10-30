@@ -15,7 +15,7 @@ namespace ProyectoDBP_TIENDA.Controllers
        {
             _temporalVenta.add(temporal);
 
-            return RedirectToAction("Index", "Producto");
+            return RedirectToAction("ProductoPrincipal", "Producto");
        }
         public IActionResult VerCarrito()
         {

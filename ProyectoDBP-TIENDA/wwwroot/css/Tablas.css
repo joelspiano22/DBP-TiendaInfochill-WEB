@@ -154,3 +154,10 @@ td {
     background-color: #34495e;
     z-index: -1;
 }
+input {
+    background-color: #0e0eae;
+    color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+}

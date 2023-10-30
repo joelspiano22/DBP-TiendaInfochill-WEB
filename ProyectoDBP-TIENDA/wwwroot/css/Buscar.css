@@ -12,6 +12,13 @@ h1 {
     border-radius: 30px;
     text-align: center;
 }
+input {
+    background-color: #0e0eae;
+    color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+    text-align: center;
+}
 
 /* Estilos para el campo de búsqueda */
 .form-control {

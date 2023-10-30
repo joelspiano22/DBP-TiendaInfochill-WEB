@@ -26,6 +26,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(obj.GetAllProductos());
         }
+        //[Route("producto/Comprar")]
         public IActionResult Comprar(string id)
         {
             ViewData["codigo"] = obj.GetProducto(id).IdPro;

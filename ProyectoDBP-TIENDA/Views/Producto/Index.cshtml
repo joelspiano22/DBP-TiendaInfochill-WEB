@@ -1,55 +1,100 @@
-﻿@model ProyectoDBP_TIENDA.Models.TbProducto
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TbProducto>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="~/css/Formulario.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - TIENDITA UCHILL</title>
+    <link rel="stylesheet" type="text/css" href="~/css/Buscar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/vistaProductos.css" rel="stylesheet" />
 </head>
-<h1>AGREGAR PRODUCTO</h1>
-<html>
 <body>
-    <form asp-controller="Producto" asp-action="Grabar" method="post">
-        <div class="form-group">
-            <label for="formGroupExampleInput">Id</label>
-            <input asp-for="IdPro" class="form-control" id="formGroupExampleInput" placeholder="Id">
-            <span asp-validation-for="IdPro" class="text-danger"></span>
-        </div>
+    <!-- Navigation-->
 
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Descripcion</label>
-            <input asp-for="DesPro" class="form-control" id="formGroupExampleInput2" placeholder="Descripcion">
-            <span asp-validation-for="DesPro" class="text-danger"></span>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">Tiendita UCHILL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form action="/TemporalVenta/VerCarrito" method="get">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Carrito
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
 
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Precio del producto</label>
-            <input asp-for="PrePro" class="form-control" id="formGroupExampleInput2" placeholder="Precio">
-            <span asp-validation-for="PrePro" class="text-danger"></span>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Stock actual</label>
-            <input asp-for="StkAct" class="form-control" id="formGroupExampleInput2" placeholder="Stock actual">
-            <span asp-validation-for="StkAct" class="text-danger"></span>
+    </nav>
+    <div id="busquedita">
+        <input class="form-control" id="myInput" type="text" placeholder="Ingrese el termino a buscar..." />
+    </div>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">TIENDITA UCHILL</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Disfruta mientras luchas contra el ciclo!</p>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Stock minimo</label>
-            <input asp-for="StkMin" class="form-control" id="formGroupExampleInput2" placeholder="Stock minimo">
-            <span asp-validation-for="StkMin" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Categoria de producto</label>
-            <input asp-for="CatePro" class="form-control" id="formGroupExampleInput2" placeholder="Categoria de producto">
-            <span asp-validation-for="CatePro" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" value="btn" name="Grabar" data-toggle="modal" data-target="#exampleModal">Grabar</button>
-        </div>
-    </form>
+    </header>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts1.js"></script>
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="card m-4" style="min-width:auto;max-width:30.5%">
+                <div class="card-header">
+                    <h3>@item.DesPro</h3>
+                    <h3>@item.PrePro</h3>
+                    <h3>@item.StkAct</h3>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
+                </div>
+            </div>
+        }
+    </div>
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

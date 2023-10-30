@@ -11,6 +11,7 @@ builder.Services.Add(new ServiceDescriptor(typeof(IUsuario), new UsuarioReposito
 builder.Services.Add(new ServiceDescriptor(typeof(IProducto), new ProductoRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ICliente), new ClienteRepository()));
+builder.Services.Add(new ServiceDescriptor(typeof(ITemporalVenta), new TemporalVentaRepository()));
 //builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));
 
 var app = builder.Build();
