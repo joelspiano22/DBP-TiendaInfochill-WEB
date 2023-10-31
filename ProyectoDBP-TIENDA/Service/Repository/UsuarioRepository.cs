@@ -15,12 +15,12 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         {
             try
             {
-                bdChill.TbUsuarios.Add(usuario);
-                bdChill.SaveChanges();
+                 bdChill.TbUsuarios.Add(usuario);
+                 bdChill.SaveChanges();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message, "existe, no puede crear contraseña");
             }
         }
         //eliminar
@@ -71,17 +71,31 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         }
 
 
-
-
-
-        public void AddContra(TbUsuario password)
-        {
-            throw new NotImplementedException();
-        }
-
+        //Valida cuando se crea contra
         public TbUsuario GetValidarUsuarioCreado(TbUsuario usuario)
         {
-            throw new NotImplementedException();
+            var obj = (from tusuario in bdChill.TbUsuarios
+                       where tusuario.CodCliente == usuario.CodCliente &&
+                                tusuario.ContraUsu == usuario.ContraUsu
+                       select tusuario).FirstOrDefault();
+            return obj;
         }
+
+
+        //contraseña add
+        public void AddContra(TbUsuario password)
+        {
+            try
+            {
+                bdChill.TbUsuarios.Add(password);
+                bdChill.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        
     }
 }
