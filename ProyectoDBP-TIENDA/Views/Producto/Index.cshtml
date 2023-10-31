@@ -71,16 +71,16 @@
     <!-- Core theme JS-->
     <script src="~/js/scripts1.js"></script>
     <div class="card-deck">
-        @foreach (var item in Model)
+        @foreach (var pro in Model)
         {
             <div class="card m-4" style="min-width:auto;max-width:30.5%">
                 <div class="card-header">
-                    <h3>@item.DesPro</h3>
-                    <h3>@item.PrePro</h3>
-                    <h3>@item.StkAct</h3>
+                    <h3>@pro.DesPro</h3>
+                    <h3>@pro.PrePro</h3>
+                    <h3>@pro.StkAct</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
+                    <a asp-action="Comprar" asp-route-id="@pro.IdPro" class="btn btn-primary m-2">Comprar</a>
                 </div>
             </div>
         }

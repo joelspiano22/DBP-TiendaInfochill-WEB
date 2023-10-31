@@ -20,6 +20,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
+        
 
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida codAlum CREADO
@@ -38,18 +39,12 @@ namespace ProyectoDBP_TIENDA.Controllers
             }
         }
 
-
-
-
         //CREAR CONTRA
         public IActionResult CrearContraseña(TbUsuario password)
         {
             _usuario.AddContra(password);
             return RedirectToAction("View");
         }
-
-
-
 
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
@@ -67,6 +62,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
 
 
+        /*---MANTENIMIENTOS-----------------------------------------------------------------*/
         //LISTAR
         [Route("usu/listar")]
         public IActionResult Listar()
@@ -83,6 +79,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         public IActionResult Grabar(TbUsuario usuario)
         {
+            
             _usuario.Add(usuario);
             return RedirectToAction("Listar");
         }
