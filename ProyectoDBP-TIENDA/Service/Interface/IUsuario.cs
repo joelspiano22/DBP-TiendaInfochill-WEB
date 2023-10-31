@@ -3,7 +3,7 @@
 namespace ProyectoDBP_TIENDA.Service.Interface
 {
     public interface IUsuario
-    {s
+    {
         void Add(TbUsuario usuario);
         void Update(TbUsuario usuario);
         void Delete(string id);

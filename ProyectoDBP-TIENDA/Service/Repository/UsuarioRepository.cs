@@ -10,7 +10,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         {
             return bdChill.TbUsuarios;
         }
-
+        //añadir
         public void Add(TbUsuario usuario)
         {
             try
@@ -23,7 +23,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 Console.WriteLine(e.Message);
             }
         }
-
+        //eliminar
         public void Delete(string id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
@@ -33,7 +33,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             bdChill.SaveChanges();
         }
 
-
+        //return obj= codCli == id
         public TbUsuario GetUsuario(string id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
@@ -42,6 +42,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             return obj;
         }
 
+        //actualiza
         public void Update(TbUsuario usuModificado)
         {
             var objAModificado = (from tusu in bdChill.TbUsuarios
@@ -64,35 +65,23 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         public TbUsuario GetValidarUsuario(TbUsuario usuario)
         {
             var obj = (from tusuario in bdChill.TbUsuarios
-                       where tusuario.CodCliente == usuario.CodCliente
+                       where tusuario.CodClienteNavigation == usuario.CodClienteNavigation
                        select tusuario).FirstOrDefault();
             return obj;
         }
 
 
-        //Valida cuando se crea contra
-        public TbUsuario GetValidarUsuarioCreado(TbUsuario usuario)
-        {
-            var obj = (from tusuario in bdChill.TbUsuarios
-                       where tusuario.CodCliente == usuario.CodCliente &&
-                                tusuario.ContraUsu == usuario.ContraUsu
-                       select tusuario).FirstOrDefault();
-            return obj;
-        }
 
 
-        //contraseña add
+
         public void AddContra(TbUsuario password)
         {
-            try
-            {
-                bdChill.TbUsuarios.Add(password);
-                bdChill.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            throw new NotImplementedException();
+        }
+
+        public TbUsuario GetValidarUsuarioCreado(TbUsuario usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

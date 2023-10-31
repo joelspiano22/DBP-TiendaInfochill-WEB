@@ -34,7 +34,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             }
             else
             {
-                return View("Index");
+                return View("Agregar");
             }
         }
 
