@@ -8,8 +8,8 @@
 }
 
 
-body {
 
+body {
     display: flex;
     justify-content: center;
     margin: 50px 500px;
@@ -17,6 +17,8 @@ body {
 }
 
 
+
+/*-------------------------CLASS BOX-----------------------*/
 .box {
     position: relative;
     width: 500px; /*ancho*/
@@ -27,32 +29,34 @@ body {
 }
 
 
+    /*--------ANTES--------------------------------------------------*/
     .box::before {
         content: '';
         position: absolute;
         top: -50%;
         left: -50%;
-        width: 500px; /*ancho*/
-        height: 600px; /*altura*/
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
         background: linear-gradient(0deg, transparent, transparent,#203e7e,#203e7e,#203e7e);
         transform-origin: bottom right;
         z-index: 1;
         animation: animate 6s linear infinite;
     }
 
+    /*-------DESPUES-------------------------------------------------------*/
     .box::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 500px; /*ancho*/
-            height: 600px; /*altura*/
-            background: linear-gradient(0deg, transparent, transparent,#203e7e,#203e7e,#203e7e);
-            transform-origin: bottom right;
-            z-index: 1;
-            animation: animate 6s linear infinite;
-            animation-delay: -3s;
-        }
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
+        background: linear-gradient(0deg, transparent, transparent,#203e7e,#203e7e,#203e7e);
+        transform-origin: bottom right;
+        z-index: 1;
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+    }
 
 /*--------CLASS BORDER------------------------------------------------------*/
 .border {
@@ -61,6 +65,7 @@ body {
     inset: 0;
 }
 
+    /*--------ANTES--------------------------------------------------------*/
     .border::before {
         content: '';
         position: absolute;
@@ -74,6 +79,7 @@ body {
         animation: animate 6s linear infinite;
         animation-delay: -1.5s;
     }
+    /*-------DESPUES-------------------------------------------------------*/
     .border::after {
         content: '';
         position: absolute;
@@ -121,15 +127,16 @@ body {
     /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-------------------------------------------------*/
     .box form .inputBox {
         position: relative;
-        width: 300px; /*ancho*/
-        margin-top: 35px;
+        width: 400px; /*ancho*/
+        margin-top: 15px;
+        margin-bottom: 20px;
     }
 
         /*----------------------CLASS BOX->FROM->CLASS INPUTBOX->INPUT-------------------------------*/
         .box form .inputBox input {
             position: relative;
             width: 100%; /*ancho*/
-            padding: 20px 10px 10px;
+            padding: 10px 10px 10px;
             background: transparent;
             outline: none;
             box-shadow: none;
@@ -139,26 +146,6 @@ body {
             letter-spacing: 0.05em;
             transition: 0.5s;
             z-index: 10;
-        }
-
-        /*----------------------CLASS BOX->FROM->CLASS INPUTBOX->SPAN------------------------*/
-        .box form .inputBox span {
-            position: absolute;
-            left: 0;
-            padding: 20px 0px 10px;
-            pointer-events: none;
-            color: rgb(26, 25, 25);
-            font-size: 1em;
-            letter-spacing: 0.05em;
-            transition: 0.5s;
-        }
-
-        /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-> SPAN->VALIDA/ENFOCA----------------------------------*/
-        .box form .inputBox input:valid ~ span,
-        .box form .inputBox input:focus ~ span {
-            color: #fcfcfc;
-            font-size: 0.75em;
-            transform: translateY(-34px);
         }
 
         /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-> I-----------------------------*/
@@ -172,13 +159,11 @@ body {
             background: #dddddd;
             border-radius: 4px;
             overflow: hidden;
-            transition: 0.5s;
-            pointer-events: none;
         }
 
         /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-> I->VALIDA/ENFOCA----------------------------------*/
-        .box form .inputBox input:valid ~ i,
-        .box form .inputBox input:focus ~ i {
+        .box form .inputBox :valid ~ i,
+        .box form .inputBox :focus ~ i {
             height: 44px;
         }
 
@@ -190,22 +175,14 @@ body {
 
         /*----------------------CLASS BOX->FROM ->LINKS-> A----------------------------------------------------------*/
         .box form .links a {
-            margin: 10px 0;
-            font-size: 0.75em;
+            padding: 2px 20px 10px 5px;
+            font-size: 0.85em;
             color: rgb(26, 25, 25);
             text-decoration: none;
         }
 
-           /*-------------------------CLASS BOX->FROM ->LINKS-> A----------------------------------------------------------*/
-            .box form .links a:hover /*alteración del aspecto de interfaz gráfica una vez que se posa el ratón sobre él
-                         aunque no haya sido seleccionado.*/
-            .box form .links a:nth-child(2) {
-                color: #fdf3f3;
-            }
-
-
     /*--------------------------BOTON---------------------------------*/
-      .box form input[type ="submit"] {
+    .box form input[type ="submit"] {
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -234,5 +211,3 @@ body {
             background: var(--clr); /*color boton*/
             box-shadow: 0 0 30px var(--clr); /*color fondo uwu*/
         }
-
-

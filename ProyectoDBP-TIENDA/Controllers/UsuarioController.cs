@@ -16,28 +16,40 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
+        public IActionResult ValidarCodigo()
+        {
+            return View();
+        }
+
+        //REGISTRAR
+        //Cuando quiere crear contraseña, primero valida codAlum CREADO
+        public IActionResult Validar(TbUsuario usuario)
+        {
+            var objUsuario = _usuario.GetValidarUsuario(usuario);
+
+            if (objUsuario != null)
+            {
+                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
+                return RedirectToAction("Index", "Usuario");
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
+
+
 
         //CREAR CONTRA
         public IActionResult CrearContraseña(TbUsuario password)
         {
-            _usuario.Add(password);
+            _usuario.AddContra(password);
             return RedirectToAction("View");
         }
 
-        //Cuando quiere crear contraseña, primero valida codAlum CREADO
-        public IActionResult ValidarCodigo(TbUsuario usuario)
-        {
-            var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
-            if (objUsuario != null)
-            {
-                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
-                return RedirectToAction("CrearContraseña");
-            }
-            else
-            {
-                return View("ValidarCodigo");
-            }
-        }
+
+
 
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
@@ -52,6 +64,52 @@ namespace ProyectoDBP_TIENDA.Controllers
             {
                 return View("Index");
             }
+        }
+
+
+        //LISTAR
+        [Route("usu/listar")]
+        public IActionResult Listar()
+        {
+            return View(_usuario.GetAllUsuario());
+        }
+
+
+        //GRABAR
+        public IActionResult Agregar()
+        {
+            return View();
+        }
+
+        public IActionResult Grabar(TbUsuario usuario)
+        {
+            _usuario.Add(usuario);
+            return RedirectToAction("Listar");
+        }
+
+
+
+        //EDIT
+
+        [Route("usu/Edit/{cod}")]
+        public IActionResult Edit(string cod)
+        {
+            return View(_usuario.GetUsuario(cod));
+        }
+        public IActionResult EditDetails(TbUsuario tbUsu)
+        {
+            _usuario.Update(tbUsu);
+            return RedirectToAction("Listar");
+        }
+
+
+        //DELETE
+
+        [Route("usu/Delete/{cod}")]
+        public IActionResult Delete(string cod)
+        {
+            _usuario.Delete(cod);
+            return RedirectToAction("Listar");
         }
 
     }

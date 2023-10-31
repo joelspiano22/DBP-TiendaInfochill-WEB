@@ -123,7 +123,6 @@ body {
         position: relative;
         width: 300px; /*ancho*/
         margin: 30px 5px;
-        
     }
 
         /*----------------------CLASS BOX->FROM->CLASS INPUTBOX->INPUT-------------------------------*/
@@ -183,7 +182,7 @@ body {
             height: 44px;
         }
 
-  
+
     /*--------------------------BOTON---------------------------------*/
     .box form input[type ="submit"] {
         display: block;
@@ -205,11 +204,11 @@ body {
         transition: 0.5s;
     }
 
-    .box form input[type ="submit"]:active {
+        .box form input[type ="submit"]:active {
             opacity: 0.0;
         }
 
-     .box form input[type ="submit"]:hover {
+        .box form input[type ="submit"]:hover {
             letter-spacing: 0.25em;
             background: var(--clr); /*color boton*/
             box-shadow: 0 0 30px var(--clr); /*color fondo uwu*/

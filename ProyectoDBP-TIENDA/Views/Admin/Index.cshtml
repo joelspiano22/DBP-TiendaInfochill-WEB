@@ -56,8 +56,8 @@
             <form id="proveedores"  action="/proveedores" method="get">
                 <button class="admin-button" type="submit">Proveedores</button>
             </form>
-            <form id="trabajadores" action="/trabajadores" method="get">
-                <button class="admin-button" type="submit">Trabajadores</button>
+            <form id="trabajadores" action="/usuario" method="get">
+                <button class="admin-button" type="submit">Usuario</button>
             </form>
         </div>
     </div>
@@ -70,7 +70,7 @@
     const clientes = document.getElementById('clientes');
     const productos = document.getElementById('productos');
     const proveedores = document.getElementById('proveedores');
-    const trabajadores = document.getElementById('trabajadores');
+    const trabajadores = document.getElementById('usuario');
 
    // Agrega un evento para escuchar el envío del formulario
    clientes.addEventListener('submit', function (e) {
@@ -105,6 +105,6 @@
                Y.preventDefault();
 
        // Redirige a la página de producto/carrito
-        window.location.href = '/Admin/vistaTrabajadores';
+        window.location.href = '/Admin/vistaUsuario';
    });
 </script>

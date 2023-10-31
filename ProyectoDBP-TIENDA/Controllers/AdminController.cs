@@ -28,7 +28,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-        public IActionResult vistaTrabajadores()
+        public IActionResult vistaUsuario()
         {
             return View();
         }
