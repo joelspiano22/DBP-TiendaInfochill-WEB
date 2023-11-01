@@ -9,7 +9,7 @@ public partial class TbOrdenCompra
 
     public DateTime FecOco { get; set; }
 
-    public string CodProveedor { get; set; } = null!;
+    public int CodProveedor { get; set; }
 
     public DateTime FecAte { get; set; }
 

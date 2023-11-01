@@ -7,7 +7,7 @@ public partial class TbDetalleCompra
 {
     public string NumOco { get; set; } = null!;
 
-    public string IdPro { get; set; } = null!;
+    public int IdPro { get; set; }
 
     public int CanPed { get; set; }
 

@@ -25,7 +25,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
 
 
 
-        public TbProveedor GetProveedor(string id)
+        public TbProveedor GetProveedor(int id)
         {
             var obj = (from tproveedor in bd.TbProveedors
                        where tproveedor.CodProveedor == id
@@ -49,7 +49,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             var obj = (from tproveedor in bd.TbProveedors
                        where tproveedor.CodProveedor == id

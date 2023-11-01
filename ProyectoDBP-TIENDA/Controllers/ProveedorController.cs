@@ -39,7 +39,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         //editados
         [Route("proveedor/Edit/{cod}")]
-        public IActionResult Edit(string cod)
+        public IActionResult Edit(int cod)
         {
             return View(objP.GetProveedor(cod));
         }
@@ -51,7 +51,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         //borrados
         [Route("proveedor/Delete/{cod}")]
-        public IActionResult Delete(string cod)
+        public IActionResult Delete(int cod)
         {
             objP.Delete(cod);
             return RedirectToAction("Listar");

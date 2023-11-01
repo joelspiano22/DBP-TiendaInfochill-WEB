@@ -24,7 +24,7 @@
             <div class="menu">
                 <a href="Home.html" class="linkNav">Home </a>
 
-                <a href="QuienSomos.html" class="linkNav">Quien Somos </a>
+                <a href="QuienSomos.html" class="linkNav">Quienes Somos </a>
 
                 <h1 class="display-4 fw-bolder">TIENDITA UCHILL</h1>
                 <p class="lead fw-normal">Disfruta mientras luchas contra el ciclo!</p>
@@ -58,9 +58,12 @@
         {
             <div class="card m-4" style="min-width:auto;max-width:30.5%">
                 <div class="card-header">
-                    <h3>@item.DesPro</h3>
-                    <h3>@item.PrePro</h3>
-                    <h3>@item.StkAct</h3>
+                    <h3>Descripcion: @item.DesPro</h3>
+                    <h3>Precio: @item.PrePro</h3>
+                    <h3>Stock: @item.StkAct</h3>
+                    @*<img src="@Url.Content("~/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
+                    @*<img src="@Url.Content("C:/Users/51918/Downloads/ProyectoDBP-TIENDA/ProyectoDBP-TIENDA/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
+                    @*<img src="~/img/1.png" alt="@item.DesPro" width="150" />*@
                 </div>
                 <div class="card-footer text-center">
                     <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>

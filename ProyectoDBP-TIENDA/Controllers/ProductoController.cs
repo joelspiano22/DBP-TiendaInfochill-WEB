@@ -1,6 +1,9 @@
 ﻿using ProyectoDBP_TIENDA.Models;
 using ProyectoDBP_TIENDA.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using System;
+using ProyectoDBP_TIENDA.Service.Repository;
 
 namespace ProyectoDBP_TIENDA.Controllers
 {
@@ -27,7 +30,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View(obj.GetAllProductos());
         }
         //[Route("producto/Comprar")]
-        public IActionResult Comprar(string id)
+        public IActionResult Comprar(int id)
         {
             ViewData["codigo"] = obj.GetProducto(id).IdPro;
             ViewData["DesPro"] = obj.GetProducto(id).DesPro;
@@ -50,21 +53,29 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View();  
         }
         [Route("producto/grabar")]
-        public IActionResult Grabar(TbProducto producto)
+        public IActionResult Grabar(TbProducto producto, IFormFile imagenArchivo)
         {
+            if (imagenArchivo != null && imagenArchivo.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imagenArchivo.CopyTo(memoryStream);
+                    producto.Imagen = memoryStream.ToArray();
+                }
+            }
             obj.Add(producto);
             return RedirectToAction("Listar");
         }
 
 
         [Route("Producto/Edit/{cod}")]
-        public IActionResult Edit(string cod)
+        public IActionResult Edit(int cod)
         {
             return View(obj.GetProducto(cod));
         }
 
         [Route("Producto/Delete/{cod}")]
-        public IActionResult Delete(string cod)
+        public IActionResult Delete(int cod)
         {
             obj.Delete(cod);
             return RedirectToAction("Listar");

@@ -89,7 +89,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         //EDIT
 
         [Route("usu/Edit/{cod}")]
-        public IActionResult Edit(string cod)
+        public IActionResult Edit(int cod)
         {
             return View(_usuario.GetUsuario(cod));
         }
@@ -103,7 +103,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         //DELETE
 
         [Route("usu/Delete/{cod}")]
-        public IActionResult Delete(string cod)
+        public IActionResult Delete(int cod)
         {
             _usuario.Delete(cod);
             return RedirectToAction("Listar");

@@ -5,7 +5,7 @@ namespace ProyectoDBP_TIENDA.Models;
 
 public partial class TbUsuario
 {
-    public string CodCliente { get; set; } = null!;
+    public int CodCliente { get; set; }
 
     public string? ContraUsu { get; set; }
 

@@ -5,7 +5,7 @@ namespace ProyectoDBP_TIENDA.Models;
 
 public partial class TbProveedor
 {
-    public string CodProveedor { get; set; } = null!;
+    public int CodProveedor { get; set; }
 
     public string RazSocial { get; set; } = null!;
 

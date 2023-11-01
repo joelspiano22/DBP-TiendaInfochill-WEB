@@ -6,8 +6,8 @@ namespace ProyectoDBP_TIENDA.Service.Interface
     {
         void Add(TbUsuario usuario);
         void Update(TbUsuario usuario);
-        void Delete(string id);
-        TbUsuario GetUsuario(string id);
+        void Delete(int id);
+        TbUsuario GetUsuario(int id);
 
         void AddContra(TbUsuario password);
         //si contraseña

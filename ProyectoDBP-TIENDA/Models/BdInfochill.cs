@@ -43,7 +43,7 @@ public partial class BdInfochill : DbContext
     {
         modelBuilder.Entity<TbAdmin>(entity =>
         {
-            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE5E0A731FE");
+            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE58D48AE96");
 
             entity.ToTable("TB_ADMIN");
 
@@ -60,7 +60,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD8D8DB8F77");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD8AEF05440");
 
             entity.ToTable("TB_AULA");
 
@@ -91,15 +91,11 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbCliente>(entity =>
         {
-            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E92D2623C5E");
+            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E92D65BF3F9");
 
             entity.ToTable("TB_CLIENTE");
 
-            entity.Property(e => e.CodCliente)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("codCliente");
+            entity.Property(e => e.CodCliente).HasColumnName("codCliente");
             entity.Property(e => e.ApeCli)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -128,7 +124,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD890980A65");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD806337E91");
 
             entity.ToTable("TB_DETALLE_AULA");
 
@@ -149,17 +145,17 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodAulaNavigation).WithOne(p => p.TbDetalleAulaCodAulaNavigation)
                 .HasForeignKey<TbDetalleAula>(d => d.CodAula)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__COD_A__5CD6CB2B");
+                .HasConstraintName("FK__TB_DETALL__COD_A__6477ECF3");
 
             entity.HasOne(d => d.LugarAulaNavigation).WithMany(p => p.TbDetalleAulaLugarAulaNavigations)
                 .HasForeignKey(d => d.LugarAula)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__LUGAR__5DCAEF64");
+                .HasConstraintName("FK__TB_DETALL__LUGAR__656C112C");
         });
 
         modelBuilder.Entity<TbDetalleCompra>(entity =>
         {
-            entity.HasKey(e => new { e.NumOco, e.IdPro }).HasName("PK__TB_DETAL__B40526891C71961C");
+            entity.HasKey(e => new { e.NumOco, e.IdPro }).HasName("PK__TB_DETAL__B40526892624ECE9");
 
             entity.ToTable("TB_DETALLE_COMPRA");
 
@@ -168,34 +164,28 @@ public partial class BdInfochill : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("NUM_OCO");
-            entity.Property(e => e.IdPro)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("idPro");
+            entity.Property(e => e.IdPro).HasColumnName("idPro");
             entity.Property(e => e.CanPed).HasColumnName("CAN_PED");
 
             entity.HasOne(d => d.IdProNavigation).WithMany(p => p.TbDetalleCompras)
                 .HasForeignKey(d => d.IdPro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__5812160E");
+                .HasConstraintName("FK__TB_DETALL__idPro__5FB337D6");
 
             entity.HasOne(d => d.NumOcoNavigation).WithMany(p => p.TbDetalleCompras)
                 .HasForeignKey(d => d.NumOco)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__NUM_O__571DF1D5");
+                .HasConstraintName("FK__TB_DETALL__NUM_O__5EBF139D");
         });
 
         modelBuilder.Entity<TbDetalleFactura>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_DETAL__3D795B27AA527F10");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_DETAL__3D795B27F08AD2D1");
 
             entity.ToTable("TB_DETALLE_FACTURA");
 
             entity.Property(e => e.IdPro)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
+                .ValueGeneratedNever()
                 .HasColumnName("idPro");
             entity.Property(e => e.CanVen).HasColumnName("CAN_VEN");
             entity.Property(e => e.PreVen)
@@ -205,12 +195,12 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.IdProNavigation).WithOne(p => p.TbDetalleFactura)
                 .HasForeignKey<TbDetalleFactura>(d => d.IdPro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__5441852A");
+                .HasConstraintName("FK__TB_DETALL__idPro__5BE2A6F2");
         });
 
         modelBuilder.Entity<TbOrdenCompra>(entity =>
         {
-            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33B7C1313A3");
+            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33BCB084355");
 
             entity.ToTable("TB_ORDEN_COMPRA");
 
@@ -219,11 +209,7 @@ public partial class BdInfochill : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("NUM_OCO");
-            entity.Property(e => e.CodProveedor)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("codProveedor");
+            entity.Property(e => e.CodProveedor).HasColumnName("codProveedor");
             entity.Property(e => e.EstOco)
                 .HasMaxLength(1)
                 .IsUnicode(false)
@@ -239,20 +225,16 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodProveedorNavigation).WithMany(p => p.TbOrdenCompras)
                 .HasForeignKey(d => d.CodProveedor)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_ORDEN___codPr__4F7CD00D");
+                .HasConstraintName("FK__TB_ORDEN___codPr__5535A963");
         });
 
         modelBuilder.Entity<TbProducto>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27559F5240");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27EF140A78");
 
             entity.ToTable("TB_PRODUCTO");
 
-            entity.Property(e => e.IdPro)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("idPro");
+            entity.Property(e => e.IdPro).HasColumnName("idPro");
             entity.Property(e => e.CatePro)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -261,6 +243,7 @@ public partial class BdInfochill : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("desPro");
+            entity.Property(e => e.Imagen).HasColumnName("imagen");
             entity.Property(e => e.PrePro)
                 .HasColumnType("money")
                 .HasColumnName("prePro");
@@ -270,15 +253,11 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProveedor>(entity =>
         {
-            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB0F054386");
+            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FBD368C869");
 
             entity.ToTable("TB_PROVEEDOR");
 
-            entity.Property(e => e.CodProveedor)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("codProveedor");
+            entity.Property(e => e.CodProveedor).HasColumnName("codProveedor");
             entity.Property(e => e.DirProveedor)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -304,11 +283,7 @@ public partial class BdInfochill : DbContext
                 .HasNoKey()
                 .ToTable("TB_USUARIO");
 
-            entity.Property(e => e.CodCliente)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("codCliente");
+            entity.Property(e => e.CodCliente).HasColumnName("codCliente");
             entity.Property(e => e.ContraUsu)
                 .HasMaxLength(20)
                 .IsUnicode(false)

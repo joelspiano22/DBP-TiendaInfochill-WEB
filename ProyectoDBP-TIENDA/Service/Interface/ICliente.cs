@@ -7,7 +7,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         IEnumerable<TbCliente> GetAllClientes();
         void Add(TbCliente cliente);
         void Update(TbCliente cliente);
-        void Delete(string id);
-        TbCliente GetCliente(string id);
+        void Delete(int id);
+        TbCliente GetCliente(int id);
     }
 }

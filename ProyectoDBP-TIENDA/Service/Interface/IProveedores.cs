@@ -7,7 +7,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         IEnumerable<TbProveedor> GetAllProveedores();
         void Add(TbProveedor proveedor);
         void Update(TbProveedor proveedor);
-        void Delete(string id);
-        TbProveedor GetProveedor(string id);
+        void Delete(int id);
+        TbProveedor GetProveedor(int id);
     }
 }

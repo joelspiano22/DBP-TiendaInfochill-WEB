@@ -24,7 +24,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
         }
         //eliminar
-        public void Delete(string id)
+        public void Delete(int id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
                        where tusu.CodCliente == id
@@ -34,7 +34,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         }
 
         //return obj= codCli == id
-        public TbUsuario GetUsuario(string id)
+        public TbUsuario GetUsuario(int id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
                        where tusu.CodCliente == id

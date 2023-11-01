@@ -25,7 +25,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
 
 
 
-        public TbProducto GetProducto(string id)
+        public TbProducto GetProducto(int id)
         {
             var obj = (from tproducto in bd.TbProductos
                        where tproducto.IdPro == id
@@ -50,7 +50,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             var obj = (from tproducto in bd.TbProductos
                        where tproducto.IdPro == id

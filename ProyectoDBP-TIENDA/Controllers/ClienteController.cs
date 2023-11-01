@@ -44,7 +44,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         //EDIT
 
         [Route("Cliente/Edit/{cod}")]
-        public IActionResult Edit(string cod)
+        public IActionResult Edit(int cod)
         {
             return View(objCliente.GetCliente(cod));
         }
@@ -58,7 +58,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         //DELETE
 
         [Route("Cliente/Delete/{cod}")]
-        public IActionResult Delete(string cod)
+        public IActionResult Delete(int cod)
         {
             objCliente.Delete(cod);
             return RedirectToAction("Listar");

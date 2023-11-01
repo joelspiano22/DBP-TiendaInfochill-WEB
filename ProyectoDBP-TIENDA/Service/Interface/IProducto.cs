@@ -7,7 +7,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         IEnumerable<TbProducto> GetAllProductos();
         void Add(TbProducto producto);
         void Update(TbProducto producto);
-        void Delete(string id);
-        TbProducto GetProducto(string id);
+        void Delete(int id);
+        TbProducto GetProducto(int id);
     }
 }

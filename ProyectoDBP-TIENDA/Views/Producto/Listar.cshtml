@@ -23,6 +23,7 @@
                 <td scope="col">Stock actual</td>
                 <td scope="col">Stock minimo</td>
                 <td scope="col">Categoria</td>
+                <td scope="col">Imagen</td>
                 <td scope="col">Editar</td>
                 <td scope="col">Eliminar</td>
             </tr>
@@ -37,6 +38,7 @@
                     <td>@item.StkAct</td>
                     <td>@item.StkMin</td>
                     <td>@item.CatePro</td>
+                    @*<td><img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Imagen)" alt="Imagen del producto" width="80" height="80" /></td>*@
                     <td><a asp-action="Edit" asp-route-id="@item.IdPro" class="btn btn-primary">Editar</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.IdPro" class="btn btn-primary">Eliminar</a></td>
                 </tr>

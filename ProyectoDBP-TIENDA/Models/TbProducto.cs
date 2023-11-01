@@ -5,7 +5,7 @@ namespace ProyectoDBP_TIENDA.Models;
 
 public partial class TbProducto
 {
-    public string IdPro { get; set; } = null!;
+    public int IdPro { get; set; }
 
     public string DesPro { get; set; } = null!;
 
@@ -16,6 +16,8 @@ public partial class TbProducto
     public int StkMin { get; set; }
 
     public string? CatePro { get; set; }
+
+    public byte[]? Imagen { get; set; }
 
     public virtual ICollection<TbDetalleCompra> TbDetalleCompras { get; set; } = new List<TbDetalleCompra>();
 
