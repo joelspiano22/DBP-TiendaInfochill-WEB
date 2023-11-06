@@ -1,0 +1,215 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* /*AFECTA A TODO EL CODIGO*/ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    margin: 100px 500px;
+    background: #487eb0;
+}
+
+
+
+/*-------------------------CLASS BOX-----------------------*/
+.box {
+    position: relative;
+    width: 500px; /*ancho*/
+    height: 500px; /*altura*/
+    background: #fdfdff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+    /*--------ANTES--------------------------------------------------*/
+    .box::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
+        background: linear-gradient(0deg, transparent, transparent,#487eb0,#487eb0,#487eb0);
+        transform-origin: bottom right;
+        z-index: 1;
+        animation: animate 6s linear infinite;
+    }
+
+    /*-------DESPUES-------------------------------------------------------*/
+    .box::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
+        background: linear-gradient(0deg, transparent, transparent,#203e7e,#203e7e,#203e7e);
+        transform-origin: bottom right;
+        z-index: 1;
+        animation: animate 6s linear infinite;
+        animation-delay: -3s;
+    }
+
+/*--------CLASS BORDER------------------------------------------------------*/
+.border {
+    position: absolute;
+    top: 0;
+    inset: 0;
+}
+
+    /*--------ANTES--------------------------------------------------------*/
+    .border::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
+        background: linear-gradient(0deg, transparent, transparent,#487eb0,#487eb0,#487eb0);
+        transform-origin: bottom right;
+        z-index: 1;
+        animation: animate 6s linear infinite;
+        animation-delay: -1.5s;
+    }
+    /*-------DESPUES-------------------------------------------------------*/
+    .border::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 380px; /*ancho*/
+        height: 420px; /*altura*/
+        background: linear-gradient(0deg, transparent, transparent,#203e7e,#203e7e,#203e7e);
+        transform-origin: bottom right;
+        z-index: 1;
+        animation: animate 6s linear infinite;
+        animation-delay: -4.5s;
+    }
+
+/*----puntos de trayectoria---------------------------------------------*/
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*-----------------------CLASS BOX->FROM--------------------------------------------------*/
+.box form {
+    position: absolute;
+    inset: 4px;
+    background: #fefeff;
+    padding: 100px 40px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+    /*-----------------------TITULO/ CLASS BOX->FROM---------------------------------------------------------*/
+    .box form h2 {
+        color: rgb(26, 25, 25);
+        font-weight: 500; /*ancho de titulo*/
+        text-align: center;
+        margin-top: -15px;
+        margin-bottom: 20px;
+        letter-spacing: 0.1em;
+    }
+
+    /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-------------------------------------------------*/
+    .box form .inputBox {
+        position: relative;
+        width: 400px; /*ancho*/
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+        /*----------------------CLASS BOX->FROM->CLASS INPUTBOX->INPUT-------------------------------*/
+        .box form .inputBox input {
+            position: relative;
+            width: 100%; /*ancho*/
+            padding: 10px 10px 10px;
+            background: transparent;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            color: #2324;
+            font-size: 1em;
+            letter-spacing: 0.05em;
+            transition: 0.5s;
+            z-index: 10;
+        }
+
+        /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-> I-----------------------------*/
+        /*----------------------TXT BOX DISEÑO-----------------------------------*/
+        .box form .inputBox i {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #dddddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /*----------------------CLASS BOX->FROM->CLASS INPUTBOX-> I->VALIDA/ENFOCA----------------------------------*/
+        .box form .inputBox :valid ~ i,
+        .box form .inputBox :focus ~ i {
+            height: 44px;
+        }
+
+    /*----------------------CLASS BOX->FROM ->LINKS---------------------------------------------------*/
+    .box form .links {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        /*----------------------CLASS BOX->FROM ->LINKS-> A----------------------------------------------------------*/
+        .box form .links a {
+            padding: 2px 20px 10px 5px;
+            font-size: 0.85em;
+            color: rgb(26, 25, 25);
+            text-decoration: none;
+        }
+
+    /*--------------------------BOTON---------------------------------*/
+    .box form input[type ="submit"] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 0.9em;
+        border-radius: 4px;
+        font-weight: 600;
+        width: 100px;
+        margin-top: 10px;
+        text-decoration: none;
+        color: rgb(26, 25, 25);
+        text-transform: uppercase; /*todo mayusculas*/
+        letter-spacing: 0.02em;
+        padding: 10px 15px;
+        transition: 0.5s;
+    }
+
+        .box form input[type ="submit"]:active {
+            opacity: 0.0;
+        }
+
+        .box form input[type ="submit"]:hover {
+            letter-spacing: 0.25em;
+            background: #40739e; /*color boton*/
+            box-shadow: 0 0 30px #40739e; /*color fondo uwu*/
+        }

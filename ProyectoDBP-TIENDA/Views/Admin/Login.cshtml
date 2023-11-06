@@ -1,4 +1,4 @@
-﻿@model ProyectoDBP_TIENDA.Models.TbUsuario
+﻿@model ProyectoDBP_TIENDA.Models.TbAdmin
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -8,31 +8,30 @@
 <html Lang="en">
 <head>
     <meta charset="UFT-8">
-    <title>Login Infosil</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Login.css">
+    <title>Login Admin</title>
+    <link rel="stylesheet" type="text/css" href="~/css/loginAdmin.css">
 
 </head>
 
 <body>
     <div class="box">
         <span class="border"></span>
-        <form asp-controller="Usuario" asp-action="ValidarCreado" method="post">
-            <img src="~/css/logo usil.png" />
-            <h2>Inicie Sesión</h2>
+        <form asp-controller="Admin" asp-action="ValidarCreado" method="post">
+            <h2>Inicie Sesión Admin</h2>
 
             <!----------------------------------SIGN IN------------------------------------------->
-            
+
             <div class="inputBox">
-            <span>Nombre de usuario</span>
-            <input asp-for="CodCliente" type="text"  id="Nombre de usuario" />
-            <i></i>
+                <span>Nombre de Admin</span>
+                <input asp-for="CodAdmin" type="text" id="Nombre de Admin" />
+                <i></i>
             </div>
 
             <!----------------------------------CONTRASEÑA------------------------------------------->
             <div class="inputBox">
-            <span>Contraseña</span>
-            <input asp-for="ContraUsu" type="password" id="Contraseña" />
-            <i></i>
+                <span>Contraseña</span>
+                <input asp-for="PassAdmin" type="password" id="Contraseña" />
+                <i></i>
             </div>
 
             <!------------------------------LINKS OLVIDO CONTRASEÑA/ REGISTRATE----------------------->

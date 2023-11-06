@@ -2,6 +2,7 @@
 using ProyectoDBP_TIENDA.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace ProyectoDBP_TIENDA.Controllers
 {
@@ -49,11 +50,15 @@ namespace ProyectoDBP_TIENDA.Controllers
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
+            
+
             var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
             if (objUsuario != null)
             {
-                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
-                return RedirectToAction("Index", "Producto");
+                
+
+                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario);
+                return RedirectToAction("ProductoPrincipal", "Producto");
             }
             else
             {
