@@ -55,14 +55,6 @@ namespace ProyectoDBP_TIENDA.Controllers
         [Route("producto/grabar")]
         public IActionResult Grabar(TbProducto producto, IFormFile imagenArchivo)
         {
-            if (imagenArchivo != null && imagenArchivo.Length > 0)
-            {
-                using (var memoryStream = new MemoryStream())
-                {
-                    imagenArchivo.CopyTo(memoryStream);
-                    producto.Imagen = memoryStream.ToArray();
-                }
-            }
             obj.Add(producto);
             return RedirectToAction("Listar");
         }

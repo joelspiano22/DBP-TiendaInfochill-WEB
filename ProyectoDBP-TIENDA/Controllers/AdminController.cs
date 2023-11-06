@@ -16,7 +16,6 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-
         public IActionResult vistaClientes() { 
             return View();
         }
@@ -34,6 +33,6 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
 
 
-        //clientes productos proveedores trabajadores
+        
     }
 }

@@ -23,10 +23,6 @@ public partial class BdInfochill : DbContext
 
     public virtual DbSet<TbDetalleAula> TbDetalleAulas { get; set; }
 
-    public virtual DbSet<TbDetalleCompra> TbDetalleCompras { get; set; }
-
-    public virtual DbSet<TbDetalleFactura> TbDetalleFacturas { get; set; }
-
     public virtual DbSet<TbOrdenCompra> TbOrdenCompras { get; set; }
 
     public virtual DbSet<TbProducto> TbProductos { get; set; }
@@ -37,13 +33,13 @@ public partial class BdInfochill : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-JOELSPI\\SQLEXPRESS;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
+        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-AMUJTOVV\\SQLEXPRESS;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TbAdmin>(entity =>
         {
-            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE58D48AE96");
+            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE5FB5AE912");
 
             entity.ToTable("TB_ADMIN");
 
@@ -60,7 +56,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD8AEF05440");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD854847AF9");
 
             entity.ToTable("TB_AULA");
 
@@ -91,7 +87,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbCliente>(entity =>
         {
-            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E92D65BF3F9");
+            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E9204782772");
 
             entity.ToTable("TB_CLIENTE");
 
@@ -124,7 +120,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleAula>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD806337E91");
+            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD8E1F90146");
 
             entity.ToTable("TB_DETALLE_AULA");
 
@@ -145,62 +141,17 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodAulaNavigation).WithOne(p => p.TbDetalleAulaCodAulaNavigation)
                 .HasForeignKey<TbDetalleAula>(d => d.CodAula)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__COD_A__6477ECF3");
+                .HasConstraintName("FK__TB_DETALL__COD_A__4CA06362");
 
             entity.HasOne(d => d.LugarAulaNavigation).WithMany(p => p.TbDetalleAulaLugarAulaNavigations)
                 .HasForeignKey(d => d.LugarAula)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__LUGAR__656C112C");
-        });
-
-        modelBuilder.Entity<TbDetalleCompra>(entity =>
-        {
-            entity.HasKey(e => new { e.NumOco, e.IdPro }).HasName("PK__TB_DETAL__B40526892624ECE9");
-
-            entity.ToTable("TB_DETALLE_COMPRA");
-
-            entity.Property(e => e.NumOco)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("NUM_OCO");
-            entity.Property(e => e.IdPro).HasColumnName("idPro");
-            entity.Property(e => e.CanPed).HasColumnName("CAN_PED");
-
-            entity.HasOne(d => d.IdProNavigation).WithMany(p => p.TbDetalleCompras)
-                .HasForeignKey(d => d.IdPro)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__5FB337D6");
-
-            entity.HasOne(d => d.NumOcoNavigation).WithMany(p => p.TbDetalleCompras)
-                .HasForeignKey(d => d.NumOco)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__NUM_O__5EBF139D");
-        });
-
-        modelBuilder.Entity<TbDetalleFactura>(entity =>
-        {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_DETAL__3D795B27F08AD2D1");
-
-            entity.ToTable("TB_DETALLE_FACTURA");
-
-            entity.Property(e => e.IdPro)
-                .ValueGeneratedNever()
-                .HasColumnName("idPro");
-            entity.Property(e => e.CanVen).HasColumnName("CAN_VEN");
-            entity.Property(e => e.PreVen)
-                .HasColumnType("money")
-                .HasColumnName("PRE_VEN");
-
-            entity.HasOne(d => d.IdProNavigation).WithOne(p => p.TbDetalleFactura)
-                .HasForeignKey<TbDetalleFactura>(d => d.IdPro)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__5BE2A6F2");
+                .HasConstraintName("FK__TB_DETALL__LUGAR__4D94879B");
         });
 
         modelBuilder.Entity<TbOrdenCompra>(entity =>
         {
-            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33BCB084355");
+            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33BDEFB366E");
 
             entity.ToTable("TB_ORDEN_COMPRA");
 
@@ -225,12 +176,12 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodProveedorNavigation).WithMany(p => p.TbOrdenCompras)
                 .HasForeignKey(d => d.CodProveedor)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_ORDEN___codPr__5535A963");
+                .HasConstraintName("FK__TB_ORDEN___codPr__3F466844");
         });
 
         modelBuilder.Entity<TbProducto>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27EF140A78");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B275BE20A0A");
 
             entity.ToTable("TB_PRODUCTO");
 
@@ -243,7 +194,6 @@ public partial class BdInfochill : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("desPro");
-            entity.Property(e => e.Imagen).HasColumnName("imagen");
             entity.Property(e => e.PrePro)
                 .HasColumnType("money")
                 .HasColumnName("prePro");
@@ -253,7 +203,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProveedor>(entity =>
         {
-            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FBD368C869");
+            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB2096444D");
 
             entity.ToTable("TB_PROVEEDOR");
 
@@ -293,7 +243,7 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodClienteNavigation).WithMany()
                 .HasForeignKey(d => d.CodCliente)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_USUARI__codCl__4AB81AF0");
+                .HasConstraintName("FK__TB_USUARI__codCl__38996AB5");
         });
 
         OnModelCreatingPartial(modelBuilder);
