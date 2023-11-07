@@ -50,14 +50,11 @@ namespace ProyectoDBP_TIENDA.Controllers
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
-            
 
             var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
             if (objUsuario != null)
             {
-                
-
-                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario);
+                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
                 return RedirectToAction("ProductoPrincipal", "Producto");
             }
             else
