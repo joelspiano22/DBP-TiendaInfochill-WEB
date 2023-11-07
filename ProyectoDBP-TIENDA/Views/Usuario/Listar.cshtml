@@ -26,12 +26,13 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.CodCliente</td>
+                    <td>@item.IdUsu</td>
                     <td>@item.ContraUsu</td>
 
-                    <td><a asp-action="Edit" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Editar</a></td>
-                    <td><a asp-action="Delete" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Eliminar</a></td>
+                    <td><a asp-action="Edit" asp-route-id="@item.CodUsu" class="btn btn-primary m-2">Editar</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.CodUsu" class="btn btn-primary m-2">Eliminar</a></td>
                 </tr>
+            }
             }
         </tbody>
     </table>
