@@ -229,21 +229,21 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbUsuario>(entity =>
         {
-            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881F343BC12");
+            entity
+                .HasNoKey()
+                .ToTable("TB_USUARIO");
 
-            entity.ToTable("TB_USUARIO");
-
-            entity.Property(e => e.CodUsu).HasColumnName("codUsu");
+            entity.Property(e => e.CodCliente).HasColumnName("codCliente");
             entity.Property(e => e.ContraUsu)
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("contraUsu");
-            entity.Property(e => e.IdUsu)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("idUsu");
+
+            entity.HasOne(d => d.CodClienteNavigation).WithMany()
+                .HasForeignKey(d => d.CodCliente)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TB_USUARI__codCl__38996AB5");
         });
 
         OnModelCreatingPartial(modelBuilder);

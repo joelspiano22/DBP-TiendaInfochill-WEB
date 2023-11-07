@@ -16,16 +16,13 @@
     <div class="box">
         <span class="border"></span>
     <form asp-controller="Usuario" asp-action="Grabar" method="post">
+        
         <!--Contraseña-->
-            <h2>Crear Usuario </h2>
+        
+            <h2>Crear Contraseña </h2>
             <div class="inputBox">
-                <input asp-for="IdUsu" type="text" placeholder="Usuario">
-                <span asp-validation-for="IdUsu"></span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input asp-for="ContraUsu" type="password" placeholder="Contraseña">
-                <span asp-validation-for="ContraUsu"></span>
+            <input asp-for="ContraUsu" type="password" placeholder="Contraseña">
+            <span asp-validation-for="ContraUsu" ></span>
                 <i></i>
             </div>
         <!--BOTON-->
