@@ -9,13 +9,12 @@
 
 
 /*------------------------------------------------------------------------*/
-header{
-
+header {
     display: flex;
     background-color: #fff;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: normal;
-    margin: 30px  10px 5px ;
+    margin: 30px 10px 5px;
     border: unset;
     text-align: right;
 }
@@ -53,6 +52,57 @@ header{
     margin: 10px 0px 10px;
     color:;
 }
+/**---CARDS----------------------------------------------------------------------------*/
 
 
+/* Estilos generales para la tarjeta-deck */
+div .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
 
+/* Estilos específicos para cada tarjeta */
+.card {
+    width: 30.5%; /* Ancho máximo para cada tarjeta */
+    min-width: auto;
+    max-width: 30.5%;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 30px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    color:#fff;
+}
+
+    .card:hover {
+        transform: scale(1.05); /* Efecto de escala al pasar el cursor sobre la tarjeta */
+    }
+
+.card-header {
+    background-color: #192a56;
+    padding: 10px;
+}
+
+.card-footer {
+    background-color: #192a56;
+    padding: 20px;
+    
+    /* Color de fondo del pie de la tarjeta */
+}
+
+.btn-primary {
+    background-color: #273c75;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #1e3799;
+    }

@@ -31,7 +31,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-        public IActionResult Login() 
+        public IActionResult Login()  
         {
             return View();
         }
