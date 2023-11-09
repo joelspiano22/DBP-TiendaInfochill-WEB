@@ -38,11 +38,12 @@ namespace ProyectoDBP_TIENDA.Controllers
         /*---Validar-----------------------------------------------------------------*/
         public IActionResult Validar(TbAdmin admin)
         {
-            var ObjAdmin = objAdmin.Validar(admin);
-            if (ObjAdmin != null)
+            var Objadmin = objAdmin.Validar(admin); // Busca el usuario en la base de datos 
+
+            if (Objadmin == null)
             {
-                HttpContext.Session.SetString("sesionAdmin", JsonConvert.SerializeObject(ObjAdmin));
-                return RedirectToAction("Login", "Admin");
+                // Si el usuario no se encuentra en la base de datos index
+                return View("Login");
             }
             else
             {

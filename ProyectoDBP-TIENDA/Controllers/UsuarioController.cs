@@ -50,7 +50,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
 
             _usuario.Add(usuario);
-            return RedirectToAction("Index");
+            return RedirectToAction("Listar");
         }
 
 
@@ -63,7 +63,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             if (usuario == null || usuario.IdUsu != usuario.IdUsu  &&   
                                    usuario.ContraUsu != usuario.ContraUsu  )
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Listar");
             }
 
             // Usuario validado correctamente
@@ -98,10 +98,10 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         //DELETE
 
-        [Route("usu/Delete/{cod}")]
-        public IActionResult Delete(int cod)
+        [Route("usu/Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            _usuario.Delete(cod);
+            _usuario.Delete(id);
             return RedirectToAction("Listar");
         }
 
