@@ -57,19 +57,16 @@ namespace ProyectoDBP_TIENDA.Controllers
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
 
-            var Objusuario = _usuario.GetValidarUsuarioCreado(usuario);
-
-            if (usuario == null || usuario.IdUsu != usuario.IdUsu  &&   
-                                   usuario.ContraUsu != usuario.ContraUsu  )
+            var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
+            if (objUsuario != null)
             {
-                return RedirectToAction("Listar");
+                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
+                return RedirectToAction("ProductoPrincipal","Producto");   
             }
-
-            // Usuario validado correctamente
-            // Almacena el usuario en la sesión
-            HttpContext.Session.SetString("UsuarioId", Objusuario.ToString());
-
-            return View("Producto","ProductoPrincipal");
+            else
+            {
+                return View("Index","Usuario");
+            } 
         }
 
 
