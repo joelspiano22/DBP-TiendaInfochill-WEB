@@ -20,12 +20,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-        public IActionResult ValidarCodigo()
-        {
-            return View();
-        }
-
-
+        
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida codAlum CREADO
         public IActionResult Validar(TbUsuario usuario)
@@ -42,6 +37,11 @@ namespace ProyectoDBP_TIENDA.Controllers
                 return View("Agregar");
             }
         }
+        public IActionResult ValidarCodigo()
+        {
+            return View();
+        }
+
         public IActionResult Agregar()
         {
             return View();

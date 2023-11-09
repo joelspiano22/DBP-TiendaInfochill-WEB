@@ -14,13 +14,13 @@ header {
     background-color: #fff;
     justify-content: space-between;
     align-items: normal;
-    margin: 30px 10px 5px;
+    margin: 30px 10px 10px;
     border: unset;
-    text-align: right;
+    text-align: center;
 }
 
 .menu h1, p {
-    padding-right: 600px;
+    padding-right: 400px;
     color: #192a56;
 }
 

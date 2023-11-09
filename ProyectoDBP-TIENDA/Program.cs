@@ -5,17 +5,17 @@ using ProyectoDBP_TIENDA.Service.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddSession(options => {
+    options.IdleTimeout = TimeSpan.FromSeconds(3600);
+}); //Agregar sesiones al proyecto 
+
 builder.Services.Add(new ServiceDescriptor(typeof(IAdmin), new AdminRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IUsuario), new UsuarioRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProducto), new ProductoRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ICliente), new ClienteRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ITemporalVenta), new TemporalVentaRepository()));
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddSession(options => {
-    options.IdleTimeout = TimeSpan.FromSeconds(3600);
-}); //Agregar sesiones al proyecto
 
 
 //builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));
@@ -39,6 +39,6 @@ app.UseAuthorization();
 app.UseSession();   
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Producto}/{action=ProductoPrincipal}/{id?}");
+    pattern: "{controller=Usuario}/{action=Index}/{id?}");
 
 app.Run();
