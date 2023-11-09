@@ -53,14 +53,9 @@ namespace ProyectoDBP_TIENDA.Controllers
             return RedirectToAction("Index");
         }
 
-        public HttpContext GetHttpContext()
-        {
-            return HttpContext;
-        }
-
 
         //Valida cuando se crea contra
-        public IActionResult ValidarCreado(TbUsuario usuario, HttpContext httpContext)
+        public IActionResult ValidarCreado(TbUsuario usuario)
         {
 
             var Objusuario = _usuario.GetValidarUsuarioCreado(usuario);
@@ -71,7 +66,9 @@ namespace ProyectoDBP_TIENDA.Controllers
                 return RedirectToAction("Index");
             }
 
-            httpContext.Session.SetString("UsuarioId", usuario.ToString());
+            // Usuario validado correctamente
+            // Almacena el usuario en la sesión
+            HttpContext.Session.SetString("UsuarioId", Objusuario.ToString());
 
             return View("Producto","ProductoPrincipal");
         }
