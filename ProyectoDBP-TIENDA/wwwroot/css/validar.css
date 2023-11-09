@@ -11,15 +11,15 @@
 body {
     display: flex;
     justify-content: center;
-    margin: 150px 550px;
+    margin: 130px 600px;
     background: #192a56;
 }
 
 
 .box {
     position: relative;
-    width: 400px; /*ancho*/
-    height: 400px; /*altura*/
+    width: 500px; /*ancho*/
+    height: 500px; /*altura*/
     background: #fdfdff;
     border-radius: 10px;
     overflow: hidden;
@@ -122,7 +122,7 @@ body {
     .box form .inputBox {
         position: relative;
         width: 300px; /*ancho*/
-        margin: 30px 5px;
+        margin: 30px 50px;
     }
 
         /*----------------------CLASS BOX->FROM->CLASS INPUTBOX->INPUT-------------------------------*/

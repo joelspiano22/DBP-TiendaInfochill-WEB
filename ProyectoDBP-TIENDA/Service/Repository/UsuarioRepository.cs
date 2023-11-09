@@ -21,6 +21,19 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message, "");
+            }
+        }
+        public void AddContra(TbUsuario usuario)
+        {
+            var usu= usuario.ContraUsu;
+            try
+            {
+                bdChill.TbUsuarios.Add(usuario);
+                bdChill.SaveChanges();
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message, "existe, no puede crear contraseña");
             }
         }
@@ -58,6 +71,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
         }
 
+
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida Idusu CREADO
         public TbUsuario GetValidarUsuario(TbUsuario usuario)
@@ -79,21 +93,6 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             return obj;
         }
 
-
-        //contraseña add
-        public void AddContra(TbUsuario password)
-        {
-            try
-            {
-                bdChill.TbUsuarios.Add(password);
-                bdChill.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        
+      
     }
 }

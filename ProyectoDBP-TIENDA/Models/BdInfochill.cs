@@ -229,7 +229,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbUsuario>(entity =>
         {
-            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881F343BC12");
+            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881C02A9E33");
 
             entity.ToTable("TB_USUARIO");
 
@@ -237,12 +237,10 @@ public partial class BdInfochill : DbContext
             entity.Property(e => e.ContraUsu)
                 .HasMaxLength(20)
                 .IsUnicode(false)
-                .IsFixedLength()
                 .HasColumnName("contraUsu");
             entity.Property(e => e.IdUsu)
                 .HasMaxLength(20)
                 .IsUnicode(false)
-                .IsFixedLength()
                 .HasColumnName("idUsu");
         });
 

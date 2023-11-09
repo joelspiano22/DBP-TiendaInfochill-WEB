@@ -3,6 +3,9 @@ using ProyectoDBP_TIENDA.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoDBP_TIENDA.Controllers
 {
@@ -21,46 +24,56 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-        
+
 
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida codAlum CREADO
         public IActionResult Validar(TbUsuario usuario)
         {
-            var objUsuario = _usuario.GetValidarUsuario(usuario);
+            var Objusuario = _usuario.GetValidarUsuario(usuario); // Busca el usuario en la base de datos 
 
-            if (objUsuario != null)
+            if (Objusuario.IdUsu == null)
             {
-                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
-                return RedirectToAction("Index", "Usuario");
+                // Si el usuario no se encuentra en la base de datos index
+                return View("ValidarCodigo");
             }
             else
             {
                 return View("Agregar");
             }
         }
-
-        //CREAR CONTRA
-        public IActionResult CrearContraseña(TbUsuario password)
+        public IActionResult Agregar()
         {
-            _usuario.AddContra(password);
-            return RedirectToAction("View");
+            return View();
+        }
+        public IActionResult Grabar(TbUsuario usuario)
+        {
+
+            _usuario.Add(usuario);
+            return RedirectToAction("Index");
         }
 
+        public HttpContext GetHttpContext()
+        {
+            return HttpContext;
+        }
+
+
         //Valida cuando se crea contra
-        public IActionResult ValidarCreado(TbUsuario usuario)
+        public IActionResult ValidarCreado(TbUsuario usuario, HttpContext httpContext)
         {
 
-            var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
-            if (objUsuario != null)
+            var Objusuario = _usuario.GetValidarUsuarioCreado(usuario);
+
+            if (usuario == null || usuario.IdUsu != usuario.IdUsu  &&   
+                                   usuario.ContraUsu != usuario.ContraUsu  )
             {
-                HttpContext.Session.SetString("sesionUsuario", JsonConvert.SerializeObject(objUsuario));
-                return RedirectToAction("ProductoPrincipal", "Producto");
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return View("Index");
-            }
+
+            httpContext.Session.SetString("UsuarioId", usuario.ToString());
+
+            return View("Producto","ProductoPrincipal");
         }
 
 
@@ -71,22 +84,6 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(_usuario.GetAllUsuario());
         }
-
-
-        //GRABAR
-        public IActionResult Agregar()
-        {
-            return View();
-        }
-
-        public IActionResult Grabar(TbUsuario usuario)
-        {
-            
-            _usuario.Add(usuario);
-            return RedirectToAction("Listar");
-        }
-
-
 
         //EDIT
 

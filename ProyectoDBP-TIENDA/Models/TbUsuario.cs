@@ -7,7 +7,7 @@ public partial class TbUsuario
 {
     public int CodUsu { get; set; }
 
-    public string? IdUsu { get; set; }
+    public string IdUsu { get; set; } = null!;
 
-    public string? ContraUsu { get; set; }
+    public string ContraUsu { get; set; } = null!;
 }
