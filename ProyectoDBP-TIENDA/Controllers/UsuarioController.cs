@@ -53,7 +53,6 @@ namespace ProyectoDBP_TIENDA.Controllers
             return RedirectToAction("Listar");
         }
 
-
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
