@@ -12,6 +12,7 @@
     <title>TIENDITA UCHILL</title>
     <link rel="stylesheet" href="HomeStyle.css">
     <link rel="stylesheet" type="text/css" href="~/css/ProductoPrincipal.css" >
+    <link rel="stylesheet" type="text/css" href="~/css/Cards.css">
     
 </head>
 <body>
@@ -33,7 +34,7 @@
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Carrito
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                     </button>
                 </form>
 
@@ -63,7 +64,7 @@
                     <h3>Stock: @item.StkAct</h3>
                     @*<img src="@Url.Content("~/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
                     @*<img src="@Url.Content("C:/Users/51918/Downloads/ProyectoDBP-TIENDA/ProyectoDBP-TIENDA/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
-                    @*<img src="~/img/1.png" alt="@item.DesPro" width="150" />*@
+                    <img src="~/img/Agua.png" alt="@item.DesPro" width="120" />
                 </div>
                 <div class="card-footer text-center">
                     <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
