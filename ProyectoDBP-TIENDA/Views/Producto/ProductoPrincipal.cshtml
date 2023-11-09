@@ -10,7 +10,7 @@
 <head>
     
     <title>TIENDITA UCHILL</title>
-    <link rel="stylesheet" href="HomeStyle.css">
+    @*<link rel="stylesheet" href="HomeStyle.css">*@
     <link rel="stylesheet" type="text/css" href="~/css/ProductoPrincipal.css" >
     
 </head>
@@ -59,16 +59,10 @@
                         <h3>Stock: @item.StkAct</h3>
 
                         @{
-                            // Construir la ruta de la imagen
-                            var imagePath = $"~/img/{item.DesPro}.png";
-                            if (imagePath != item.DesPro)
-                            {
-                                <img src="@imagePath" alt="@item.DesPro" width="120" />
-                                //<img src=$"~/img/{item.DesPro}.png" alt="@item.DesPro" width="120" />
-                            }
+                            // Construir la ruta de la imagen en la carpeta wwwroot/img
+                            var imagePath = $"~/img/{item.DesPro}.jpg";
                         }
-                        
-                        @*<img src="~/img/Agua.png" alt="@item.DesPro" width="120" />*@
+                        <img src="@Url.Content(imagePath)" alt="@item.DesPro" width="120" />
                     </div>
                     <div class="card-footer text-center">
                         <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
