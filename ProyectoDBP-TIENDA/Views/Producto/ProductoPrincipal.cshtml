@@ -49,24 +49,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="~/js/scripts1.js"></script>
-    <div class="card-deck">
-        @foreach (var item in Model)
-        {
-            <div class="card m-4" style="min-width:auto;max-width:30.5%">
-                <div class="card-header">
-                    <h3>Descripcion: @item.DesPro</h3>
-                    <h3>Precio: @item.PrePro</h3>
-                    <h3>Stock: @item.StkAct</h3>
-                    @*<img src="@Url.Content("~/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
-                    @*<img src="@Url.Content("C:/Users/51918/Downloads/ProyectoDBP-TIENDA/ProyectoDBP-TIENDA/wwwroot/img/1.png" + item.Imagen)" alt="@item.DesPro" />*@
-                    <img src="~/img/Agua.png" alt="@item.DesPro" width="120" />
+        <div class="card-deck">
+            @foreach (var item in Model)
+            {
+                <div class="card m-4" style="min-width:auto;max-width:30.5%">
+                    <div class="card-header">
+                        <h3>Descripcion: @item.DesPro</h3>
+                        <h3>Precio: @item.PrePro</h3>
+                        <h3>Stock: @item.StkAct</h3>
+
+                        @{
+                            // Construir la ruta de la imagen
+                            var imagePath = $"~/img/{item.DesPro}.png";
+                            if (imagePath != item.DesPro)
+                            {
+                                <img src="@imagePath" alt="@item.DesPro" width="120" />
+                                //<img src=$"~/img/{item.DesPro}.png" alt="@item.DesPro" width="120" />
+                            }
+                        }
+                        
+                        @*<img src="~/img/Agua.png" alt="@item.DesPro" width="120" />*@
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
+                    </div>
                 </div>
-                <div class="card-footer text-center">
-                    <a asp-action="Comprar" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Comprar</a>
-                </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+
     </div>
 </body>
 </html>
