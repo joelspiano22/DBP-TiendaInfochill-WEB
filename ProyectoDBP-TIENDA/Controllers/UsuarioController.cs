@@ -34,7 +34,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             }
             else
             {
-                return View("Agregar");
+                return View("Edit");
             }
         }
         public IActionResult ValidarCodigo()
@@ -42,17 +42,16 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View();
         }
 
-        public IActionResult Agregar()
+        [Route("usu/Edit/{cod}")]
+        public IActionResult Edit(int cod)
         {
-            return View();
+            return View(_usuario.GetUsuario(cod));
         }
-        public IActionResult Grabar(TbUsuario usuario)
+        public IActionResult EditDetails(TbUsuario tbUsu)
         {
-
-            _usuario.Add(usuario);
+            _usuario.Update(tbUsu);
             return RedirectToAction("Listar");
         }
-
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
@@ -71,26 +70,22 @@ namespace ProyectoDBP_TIENDA.Controllers
 
 
         /*---MANTENIMIENTOS-----------------------------------------------------------------*/
+        public IActionResult Agregar()
+        {
+            return View();
+        }
+        public IActionResult Grabar(TbUsuario usuario)
+        {
+
+            _usuario.Add(usuario);
+            return RedirectToAction("Listar");
+        }
+
         //LISTAR
-        [Route("usu/listar")]
         public IActionResult Listar()
         {
             return View(_usuario.GetAllUsuario());
         }
-
-        //EDIT
-
-        [Route("usu/Edit/{cod}")]
-        public IActionResult Edit(int cod)
-        {
-            return View(_usuario.GetUsuario(cod));
-        }
-        public IActionResult EditDetails(TbUsuario tbUsu)
-        {
-            _usuario.Update(tbUsu);
-            return RedirectToAction("Listar");
-        }
-
 
         //DELETE
 

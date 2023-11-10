@@ -7,17 +7,12 @@
 <head>
     <link rel="stylesheet" href="~/css/Formulario.css" />
 </head>
-<h1>AGREGAR CLIENTE</h1>
+<h1>AGREGAR CLIENTE</h1>    
 <html>
 
 <body>
     <form asp-controller="Cliente" asp-action="Grabar" method="post">
-        <!--ID-->
-        @*<div class="form-group">
-            <label for="formGroupExampleInput">Id</label>
-            <input asp-for="CodCliente" class="form-control" id="formGroupExampleInput" placeholder="Id">
-            <span asp-validation-for="CodCliente" class="text-danger"></span>
-        </div>*@
+        
         <!--NOMBRE-->
         <div class="form-group">
             <label for="formGroupExampleInput2">Nombre</label>

@@ -7,29 +7,28 @@
 <!DOCTYPE html>
 <html Lang="en">
 <head>
-    <meta charset="UFT-8">
-    <title>Validar</title>
-    <link rel="stylesheet" type="text/css" href="~/css/validar.css">
-
+    <link rel="stylesheet" href="~/css/Formulario.css" />
 </head>
+<h1>AGREGAR USUARIO</h1>
 <body>
     <div class="box">
-        <span class="border"></span>
-    <form asp-controller="Usuario" asp-action="Grabar" method="post">
-        <!--Contraseña-->
-            <h2>Crear Usuario </h2>
-            <div class="inputBox">
-                <input asp-for="IdUsu" type="text" placeholder="Usuario">
-                <span asp-validation-for="IdUsu"></span>
-                <i></i>
+        <form asp-controller="Usuario" asp-action="Grabar" method="post">
+            <!--usuario-->
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Usuario</label>
+                <input asp-for="IdUsu" class="form-control" id="formGroupExampleInput2" placeholder="Usuario">
+                <span asp-validation-for="IdUsu" class="text-danger"></span>
             </div>
-            <div class="inputBox">
-                <input asp-for="ContraUsu" type="password" placeholder="Contraseña">
-                <span asp-validation-for="ContraUsu"></span>
-                <i></i>
+            <!--contraseña-->
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Contraseña</label>
+                <input asp-for="ContraUsu" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
+                <span asp-validation-for="ContraUsu" class="text-danger"></span>
             </div>
-        <!--BOTON-->
-            <input type="submit" style="--clr:#fbff00" value="Grabar" aria-hidden="true">
+            <!--BOTON-->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" value="btn" name="grabar" data-toggle="modal" data-target="#exampleModal">Grabar</button>
+            </div>
 
     </form>
     </div>
