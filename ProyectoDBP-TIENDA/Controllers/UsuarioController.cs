@@ -50,7 +50,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         public IActionResult EditDetails(TbUsuario tbUsu)
         {
             _usuario.Update(tbUsu);
-            return RedirectToAction("Listar");
+            return RedirectToAction("Index");
         }
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)

@@ -14,9 +14,9 @@ header {
     background-color: #fff;
     justify-content: space-between;
     align-items: normal;
-    margin: 30px 10px 10px;
+    margin: 30px 10px 5px;
     border: unset;
-    text-align: center;
+    text-align: right;
 }
 
 .menu h1, p {
@@ -25,33 +25,31 @@ header {
 }
 
 
-.menu a{
+.menu a {
     font-weight: 700;
     font-size: 20px;
-    padding-right: 150px;
     text-decoration: none;
     color: dimgray;
 }
 
 .menu button {
-    margin: -100px 50px -10px ;
+    margin: -75px 50px -10px;
 }
 
 .contenido {
     width: 100%;
     max-width: 1250px;
-    
 }
 
-.contenido h1, p {
-    color: #192a56;
-    text-align: center;
-}
+    .contenido h1, p , a{
+        color: #192a56;
+        text-align: center;
+    }
 
-.contenido div {
-    margin: 10px 0px 10px;
-    color:;
-}
+    .contenido div {
+        margin: 10px 0px 10px;
+        color:;
+    }
 /**---CARDS----------------------------------------------------------------------------*/
 
 
@@ -106,3 +104,15 @@ div .card-deck {
     .btn-primary:hover {
         background-color: #1e3799;
     }
+
+/*---FOOTER----------------------------------------------------------------------------------------*/
+footer a {
+    margin-left:150px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    text-align:center;
+    color: #353b48;
+}
+
+
