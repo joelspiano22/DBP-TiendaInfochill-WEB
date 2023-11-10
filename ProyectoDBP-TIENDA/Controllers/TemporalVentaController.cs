@@ -21,11 +21,16 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(_temporalVenta.GetAllTemporarySale());
         }
-
+        public IActionResult Factura()
+        {
+            return View();
+        }
         public IActionResult Operacion()
         {
+            
             var factura = _temporalVenta.GetAllTemporarySale();
-            return View(factura);
+
+            return View("Factura");
         }
     }
 }
