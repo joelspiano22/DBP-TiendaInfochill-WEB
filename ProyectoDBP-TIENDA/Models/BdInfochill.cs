@@ -17,11 +17,9 @@ public partial class BdInfochill : DbContext
 
     public virtual DbSet<TbAdmin> TbAdmins { get; set; }
 
-    public virtual DbSet<TbAula> TbAulas { get; set; }
-
     public virtual DbSet<TbCliente> TbClientes { get; set; }
 
-    public virtual DbSet<TbDetalleAula> TbDetalleAulas { get; set; }
+    public virtual DbSet<TbDetalleFactura> TbDetalleFacturas { get; set; }
 
     public virtual DbSet<TbOrdenCompra> TbOrdenCompras { get; set; }
 
@@ -39,7 +37,7 @@ public partial class BdInfochill : DbContext
     {
         modelBuilder.Entity<TbAdmin>(entity =>
         {
-            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE5FB5AE912");
+            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE5D2F41655");
 
             entity.ToTable("TB_ADMIN");
 
@@ -54,40 +52,9 @@ public partial class BdInfochill : DbContext
                 .HasColumnName("passAdmin");
         });
 
-        modelBuilder.Entity<TbAula>(entity =>
-        {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_AULA__3DB71BD854847AF9");
-
-            entity.ToTable("TB_AULA");
-
-            entity.Property(e => e.CodAula)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("COD_AULA");
-            entity.Property(e => e.CursoAula)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("CURSO_AULA");
-            entity.Property(e => e.FechAula)
-                .HasColumnType("date")
-                .HasColumnName("FECH_AULA");
-            entity.Property(e => e.LugarAula)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("LUGAR_AULA");
-            entity.Property(e => e.StkAula).HasColumnName("STK_AULA");
-            entity.Property(e => e.UniAula)
-                .HasMaxLength(30)
-                .IsUnicode(false)
-                .HasColumnName("UNI_AULA");
-        });
-
         modelBuilder.Entity<TbCliente>(entity =>
         {
-            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E9204782772");
+            entity.HasKey(e => e.CodCliente).HasName("PK__TB_CLIEN__39F43E92D79BD4A4");
 
             entity.ToTable("TB_CLIENTE");
 
@@ -118,40 +85,34 @@ public partial class BdInfochill : DbContext
                 .HasColumnName("tlfCli");
         });
 
-        modelBuilder.Entity<TbDetalleAula>(entity =>
+        modelBuilder.Entity<TbDetalleFactura>(entity =>
         {
-            entity.HasKey(e => e.CodAula).HasName("PK__TB_DETAL__3DB71BD8E1F90146");
+            entity.HasKey(e => e.IdFac).HasName("PK__TB_DETAL__39C0459A2CAD74D9");
 
-            entity.ToTable("TB_DETALLE_AULA");
+            entity.ToTable("TB_DETALLE_FACTURA");
 
-            entity.Property(e => e.CodAula)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("COD_AULA");
-            entity.Property(e => e.FechAula)
-                .HasColumnType("date")
-                .HasColumnName("FECH_AULA");
-            entity.Property(e => e.LugarAula)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
-                .HasColumnName("LUGAR_AULA");
+            entity.Property(e => e.IdFac).HasColumnName("idFac");
+            entity.Property(e => e.CanVen).HasColumnName("CAN_VEN");
+            entity.Property(e => e.CodUsu).HasColumnName("codUsu");
+            entity.Property(e => e.IdPro).HasColumnName("idPro");
+            entity.Property(e => e.PreVen)
+                .HasColumnType("money")
+                .HasColumnName("PRE_VEN");
 
-            entity.HasOne(d => d.CodAulaNavigation).WithOne(p => p.TbDetalleAulaCodAulaNavigation)
-                .HasForeignKey<TbDetalleAula>(d => d.CodAula)
+            entity.HasOne(d => d.CodUsuNavigation).WithMany(p => p.TbDetalleFacturas)
+                .HasForeignKey(d => d.CodUsu)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__COD_A__4CA06362");
+                .HasConstraintName("FK__TB_DETALL__codUs__440B1D61");
 
-            entity.HasOne(d => d.LugarAulaNavigation).WithMany(p => p.TbDetalleAulaLugarAulaNavigations)
-                .HasForeignKey(d => d.LugarAula)
+            entity.HasOne(d => d.IdProNavigation).WithMany(p => p.TbDetalleFacturas)
+                .HasForeignKey(d => d.IdPro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__LUGAR__4D94879B");
+                .HasConstraintName("FK__TB_DETALL__idPro__44FF419A");
         });
 
         modelBuilder.Entity<TbOrdenCompra>(entity =>
         {
-            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33BDEFB366E");
+            entity.HasKey(e => e.NumOco).HasName("PK__TB_ORDEN__D7D2B33BA3A70CDA");
 
             entity.ToTable("TB_ORDEN_COMPRA");
 
@@ -181,7 +142,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProducto>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B275BE20A0A");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27D871C4BF");
 
             entity.ToTable("TB_PRODUCTO");
 
@@ -203,7 +164,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProveedor>(entity =>
         {
-            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB2096444D");
+            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB6BA8BCF6");
 
             entity.ToTable("TB_PROVEEDOR");
 
@@ -229,7 +190,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbUsuario>(entity =>
         {
-            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881C02A9E33");
+            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881B3B73C9A");
 
             entity.ToTable("TB_USUARIO");
 

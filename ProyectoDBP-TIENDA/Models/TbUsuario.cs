@@ -10,4 +10,6 @@ public partial class TbUsuario
     public string IdUsu { get; set; } = null!;
 
     public string ContraUsu { get; set; } = null!;
+
+    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
 }
