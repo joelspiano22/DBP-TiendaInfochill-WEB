@@ -1,0 +1,57 @@
+﻿@model ProyectoDBP_TIENDA.Models.TbDetalleFactura
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Formulario.css" />
+</head>
+<h1>AGREGAR FACTURA</h1>
+<html>
+
+<body>
+    <form asp-controller="DetalleFactura" asp-action="Grabar" method="post">
+
+        <!--ID-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">ID FACTURA</label>
+            <input asp-for="IdFac" class="form-control" id="formGroupExampleInput2" placeholder="ID FACTURA">
+            <span asp-validation-for="IdFac" class="text-danger"></span>
+        </div>
+        <!--CODIGO USUARIO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">CODIGO USUARIO</label>
+            <input asp-for="CodUsu" class="form-control" id="formGroupExampleInput2" placeholder="CODIGO USUARIO">
+            <span asp-validation-for="CodUsu" class="text-danger"></span>
+        </div>
+        <!--ID PRODUCTO-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">ID PRODUCTO</label>
+            <input asp-for="IdPro" class="form-control" id="formGroupExampleInput2" placeholder="ID PRODUCTO">
+            <span asp-validation-for="IdPro" class="text-danger"></span>
+        </div>
+        <!--Cantidad de Venta-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Cantidad de Venta</label>
+            <input asp-for="CanVen" class="form-control" id="formGroupExampleInput2" placeholder="Cantidad de Venta">
+            <span asp-validation-for="CanVen" class="text-danger"></span>
+        </div>
+        <!--Precio de Venta-->
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Precio de Venta</label>
+            <input asp-for="PreVen" class="form-control" id="formGroupExampleInput2" placeholder="Precio de Venta">
+            <span asp-validation-for="PreVen" class="text-danger"></span>
+        </div>
+        
+        <!--BOTON-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="grabar" data-toggle="modal" data-target="#exampleModal">Grabar</button>
+        </div>
+
+    </form>
+
+
+</body>
+</html>
+

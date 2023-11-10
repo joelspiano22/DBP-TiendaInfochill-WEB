@@ -31,6 +31,10 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
+        public IActionResult vistaDetalleFactura()
+        {
+            return View();
+        }
         public IActionResult Login()  
         {
             return View();

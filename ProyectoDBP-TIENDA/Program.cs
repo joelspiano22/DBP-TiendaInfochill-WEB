@@ -16,6 +16,7 @@ builder.Services.Add(new ServiceDescriptor(typeof(IProducto), new ProductoReposi
 builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ICliente), new ClienteRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ITemporalVenta), new TemporalVentaRepository()));
+builder.Services.Add(new ServiceDescriptor(typeof(IDetalleFactura), new DetalleFacturaRepository()));
 
 
 //builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));
@@ -39,6 +40,6 @@ app.UseAuthorization();
 app.UseSession();   
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Producto}/{action=ProductoPrincipal}/{id?}");
+    pattern: "{controller=Admin}/{action=Index}/{id?}");
 
 app.Run();

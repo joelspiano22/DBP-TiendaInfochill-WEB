@@ -4,9 +4,11 @@ namespace ProyectoDBP_TIENDA.Service.Interface
 {
     public interface IDetalleFactura
     {
-        void Add(TbAdmin admin);
-        void Update(TbAdmin adminModificado);
+        void Add(TbDetalleFactura fac);
+        void Update(TbDetalleFactura facModificado);
         void Delete(int id);
-        TbAdmin GetAdmin(int id);
+        TbDetalleFactura GetFactura(int id);
+
+        IEnumerable<TbDetalleFactura> GetAllFacturas();
     }
 }

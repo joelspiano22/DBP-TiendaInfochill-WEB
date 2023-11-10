@@ -59,6 +59,9 @@
             <form id="usuario" action="/usuario" method="get">
                 <button class="admin-button" type="submit">Usuario</button>
             </form>
+            <form id="factura" action="/factura" method="get">
+                <button class="admin-button" type="submit">Factura</button>
+            </form>
         </div>
     </div>
 </body>
@@ -71,6 +74,7 @@
     const productos = document.getElementById('productos');
     const proveedores = document.getElementById('proveedores');
     const usuario = document.getElementById('usuario');
+    const factura = document.getElementById('factura');
 
    // Agrega un evento para escuchar el envío del formulario
    clientes.addEventListener('submit', function (e) {
@@ -99,12 +103,20 @@
         window.location.href = '/Admin/vistaProveedores';
                 });
 
-                // Agrega un evento para escuchar el envío del formulario
-           usuario.addEventListener('submit', function (Y) {
+        // Agrega un evento para escuchar el envío del formulario
+        usuario.addEventListener('submit', function (Y) {
                // Evita el envío del formulario predeterminado
                Y.preventDefault();
 
-       // Redirige a la página de producto/carrito
+                // Redirige a la página de producto/carrito
         window.location.href = '/Admin/vistaUsuario';
+        });
+
+        factura.addEventListener('submit', function (Z) {
+            // Evita el envío del formulario predeterminado
+            Z.preventDefault();
+
+            // Redirige a la página de producto/carrito
+            window.location.href = '/Admin/vistaDetalleFactura';
         });
 </script>
