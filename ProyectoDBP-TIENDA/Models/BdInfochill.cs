@@ -87,27 +87,33 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleFactura>(entity =>
         {
-            entity.HasKey(e => e.IdFac).HasName("PK__TB_DETAL__39C0459A2CAD74D9");
+            entity.HasKey(e => e.IdFac).HasName("PK__TB_DETAL__39C0459A98B7E659");
 
             entity.ToTable("TB_DETALLE_FACTURA");
 
             entity.Property(e => e.IdFac).HasColumnName("idFac");
             entity.Property(e => e.CanVen).HasColumnName("CAN_VEN");
+            entity.Property(e => e.CodCliente).HasColumnName("codCliente");
             entity.Property(e => e.CodUsu).HasColumnName("codUsu");
             entity.Property(e => e.IdPro).HasColumnName("idPro");
             entity.Property(e => e.PreVen)
                 .HasColumnType("money")
                 .HasColumnName("PRE_VEN");
 
+            entity.HasOne(d => d.CodClienteNavigation).WithMany(p => p.TbDetalleFacturas)
+                .HasForeignKey(d => d.CodCliente)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TB_DETALL__codCl__49C3F6B7");
+
             entity.HasOne(d => d.CodUsuNavigation).WithMany(p => p.TbDetalleFacturas)
                 .HasForeignKey(d => d.CodUsu)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__codUs__440B1D61");
+                .HasConstraintName("FK__TB_DETALL__codUs__47DBAE45");
 
             entity.HasOne(d => d.IdProNavigation).WithMany(p => p.TbDetalleFacturas)
                 .HasForeignKey(d => d.IdPro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__44FF419A");
+                .HasConstraintName("FK__TB_DETALL__idPro__48CFD27E");
         });
 
         modelBuilder.Entity<TbOrdenCompra>(entity =>

@@ -11,9 +11,13 @@ public partial class TbDetalleFactura
 
     public int IdPro { get; set; }
 
+    public int CodCliente { get; set; }
+
     public int CanVen { get; set; }
 
     public decimal PreVen { get; set; }
+
+    public virtual TbCliente CodClienteNavigation { get; set; } = null!;
 
     public virtual TbUsuario CodUsuNavigation { get; set; } = null!;
 

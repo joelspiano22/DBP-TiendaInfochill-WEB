@@ -18,4 +18,6 @@ public partial class TbCliente
     public string? CorreoCli { get; set; }
 
     public byte? Estado { get; set; }
+
+    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
 }
