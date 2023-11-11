@@ -38,20 +38,20 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             }
         }
         //eliminar
-        public void Delete(int id)
+        public void Delete(string id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
-                       where tusu.CodUsu == id
+                       where tusu.IdUsu == id
                        select tusu).Single();
             bdChill.TbUsuarios.Remove(obj);//delete from <tabla> where <campo>=id
             bdChill.SaveChanges();
         }
 
         //return obj= codCli == id
-        public TbUsuario GetUsuario(int id)
+        public TbUsuario GetUsuario(string id)
         {
             var obj = (from tusu in bdChill.TbUsuarios
-                       where tusu.CodUsu == id
+                       where tusu.IdUsu == id
                        select tusu).Single();
             return obj;
         }

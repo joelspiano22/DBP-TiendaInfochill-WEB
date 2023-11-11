@@ -56,7 +56,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 objAModificado.TlfCli = cliModificado.TlfCli;
                 objAModificado.CorreoCli = cliModificado.CorreoCli;
                 objAModificado.Estado = cliModificado.Estado;
-
+                objAModificado.IdUsu = cliModificado.IdUsu;
                 bdChill.SaveChanges();
             }
         }

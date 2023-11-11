@@ -50,7 +50,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             if (objModificado != null)
             {
                 objModificado.IdFac = facModificado.IdFac;
-                objModificado.CodUsu = facModificado.CodUsu;
+                objModificado.IdUsu = facModificado.IdUsu;
                 objModificado.IdPro = facModificado.IdPro;
                 objModificado.CanVen = facModificado.CanVen;
                 objModificado.PreVen = facModificado.PreVen;

@@ -24,6 +24,7 @@
                 <td scope="col">Telefono</td>
                 <td scope="col">Correo</td>
                 <td scope="col">Estado</td>
+                <td scope="col">Codigo de Alumno</td>
                 <td scope="col">Editar</td>
                 <td scope="col">Eliminar</td>
             </tr>
@@ -39,6 +40,7 @@
                     <td>@item.TlfCli</td>
                     <td>@item.CorreoCli</td>
                     <td>@item.Estado</td>
+                    <td>@item.IdUsu</td>
                     <td><a asp-action="Edit" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Editar</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.CodCliente" class="btn btn-primary m-2">Eliminar</a></td>
                 </tr>
