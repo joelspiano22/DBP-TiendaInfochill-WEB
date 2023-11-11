@@ -7,17 +7,19 @@ public partial class TbCliente
 {
     public int CodCliente { get; set; }
 
-    public string? NomCli { get; set; }
+    public string NomCli { get; set; } = null!;
 
-    public string? ApeCli { get; set; }
+    public string ApeCli { get; set; } = null!;
 
-    public string? DniCli { get; set; }
+    public string DniCli { get; set; } = null!;
 
     public string TlfCli { get; set; } = null!;
 
-    public string? CorreoCli { get; set; }
+    public string CorreoCli { get; set; } = null!;
 
-    public byte? Estado { get; set; }
+    public string Estado { get; set; } = null!;
 
-    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
+    public string IdUsu { get; set; } = null!;
+
+    public virtual TbUsuario IdUsuNavigation { get; set; } = null!;
 }
