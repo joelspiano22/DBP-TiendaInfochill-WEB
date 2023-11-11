@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProyectoDBP_TIENDA.Models.TbDetalleFactura>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/Tablas.css" />
+</head>
+<html>
+<body>
+    <h1>Detalle Factura</h1>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td scope="col">Id Factura</td>
+                <td scope="col">Codigo Usuario</td>
+                <td scope="col">Id Producto</td>
+                <td scope="col">Codigo Cliente</td>
+                <td scope="col">Cantidad de Venta</td>
+                <td scope="col">Precio de Venta</td>
+                
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdFac</td>
+                    <td>@item.CodUsuNavigation</td>
+                    <td>@item.IdProNavigation</td>
+                    <td>@item.CanVen</td>
+                    <td>@item.CodClienteNavigation</td>
+                    <td>@item.PreVen</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

@@ -23,14 +23,36 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
         public IActionResult Factura()
         {
-            return View();
+            return View("DetalleFactura", "Index");
         }
         public IActionResult Operacion()
         {
             
             var factura = _temporalVenta.GetAllTemporarySale();
 
-            return View("Factura");
+            return View(factura);
+        }
+        //EDIT
+
+        [Route("Cliente/Edit/{cod}")]
+        public IActionResult Edit(int cod)
+        {
+            return View(_temporalVenta.GetProducto(cod));
+        }
+        public IActionResult EditDetails(TbProducto producto)
+        {
+            _temporalVenta.Update(producto);
+            return RedirectToAction("VerCarrito");
+        }
+
+
+        //DELETE
+
+        [Route("Cliente/Delete/{cod}")]
+        public IActionResult Delete(int cod)
+        {
+            _temporalVenta.Delete(cod);
+            return RedirectToAction("VerCarrito");
         }
     }
 }

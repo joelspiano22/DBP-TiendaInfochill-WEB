@@ -6,5 +6,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         void add(TemporalVenta temporalVenta);
         IEnumerable<TemporalVenta> GetAllTemporarySale();
         void Update(TbProducto producto);
+        void Delete(int id);
+        TbProducto GetProducto(int id);
     }
 }

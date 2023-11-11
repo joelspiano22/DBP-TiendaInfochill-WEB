@@ -20,6 +20,8 @@
                 <td scope="col">Precio</td>
                 <td scope="col">Stock</td>
                 <td scope="col">Cantidad seleccionada</td>
+                <td scope="col">Editar</td>
+                <td scope="col">Eliminar</td>
             </tr>
         </thead>
         <tbody id="myTable">
@@ -32,7 +34,9 @@
                         <td>@item.PrePro</td>
                         <td>@item.StkAct</td>
                         <td>@item.cantidad</td>
-                    </tr>
+                    <td><a asp-action="Edit" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Editar</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Eliminar</a></td>
+                </tr>
                 }
         </tbody>
     </table>
