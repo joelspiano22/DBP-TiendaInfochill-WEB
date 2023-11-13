@@ -13,9 +13,10 @@ namespace ProyectoDBP_TIENDA.Service.Repository
 
         public void Delete(int id)
         {
-            var obj = (from tempo in bdChill.TbProductos
-                       where tempo.IdPro == id
-                       select tempo).Single();
+            var obj = (from temp in bdChill.TbProductos
+                       where temp.IdPro == id
+                       select temp).Single();
+
             bdChill.TbProductos.Remove(obj);//delete from <tabla> where <campo>=id
             bdChill.SaveChanges();
         }
@@ -28,25 +29,23 @@ namespace ProyectoDBP_TIENDA.Service.Repository
 
         public TbProducto GetProducto(int id)
         {
-            var obj = (from tempo in bdChill.TbProductos
-                       where tempo.IdPro == id
-                       select tempo).Single();
+            var obj = (from temp in bdChill.TbProductos
+                       where temp.IdPro == id
+                       select temp).Single();
             return obj;
         }
 
         public void Update(TbProducto productoModi)
         {
-            var objModificado = (from tproducto in bdChill.TbProductos
-                                 where tproducto.IdPro == productoModi.IdPro
-                                 select tproducto).FirstOrDefault();
+            var objModificado = (from temp in bdChill.TbProductos
+                                 where temp.IdPro == productoModi.IdPro
+                                 select temp).FirstOrDefault();
             if (objModificado != null)
             {
                 objModificado.IdPro = productoModi.IdPro;
                 objModificado.DesPro = productoModi.DesPro;
                 objModificado.PrePro = productoModi.PrePro;
                 objModificado.StkAct = productoModi.StkAct;
-                objModificado.StkMin = productoModi.StkMin;
-                objModificado.CatePro = productoModi.CatePro;
                 bdChill.SaveChanges();
             }
         }

@@ -84,5 +84,14 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View(obj.GetAllProductos());
         }
 
+        public IActionResult Nosotros()
+        {
+            return View();
+        }
+
+        public IActionResult TerminosYCondiciones()
+        {
+            return View();
+        }
     }
 }

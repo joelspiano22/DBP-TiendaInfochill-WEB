@@ -32,9 +32,9 @@ namespace ProyectoDBP_TIENDA.Controllers
 
             return View(factura);
         }
-        //EDIT
 
-        [Route("Cliente/Edit/{cod}")]
+        //EDIT
+        [Route("TemporalVenta/Edit/{cod}")]
         public IActionResult Edit(int cod)
         {
             return View(_temporalVenta.GetProducto(cod));
@@ -47,8 +47,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
 
         //DELETE
-
-        [Route("Cliente/Delete/{cod}")]
+        [Route("TemporalVenta/Delete/{cod}")]
         public IActionResult Delete(int cod)
         {
             _temporalVenta.Delete(cod);

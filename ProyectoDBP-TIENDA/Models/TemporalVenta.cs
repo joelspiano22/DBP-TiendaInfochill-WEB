@@ -2,7 +2,7 @@
 {
     public class TemporalVenta
     {
-        public string IdPro { get; set; }
+        public int IdPro { get; set; }
         public string DesPro { get; set; }
         public double PrePro { get; set; }
         public int StkAct { get; set; }
