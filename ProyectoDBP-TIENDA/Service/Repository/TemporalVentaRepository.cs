@@ -17,7 +17,6 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             if (obj != null)
             {
                 _temporalVentaList.Remove(obj);
-              
             }
         }
 
