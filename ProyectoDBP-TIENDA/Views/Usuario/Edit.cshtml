@@ -19,20 +19,18 @@
 
             <form asp-controller="Usuario" asp-action="EditDetails" method="post">
             <h2>Crear Contraseña Alumno</h2>
-
-                <!--ID-->
-                <div class="inputBox">
-                <input asp-for="IdUsu" type="text" class="form-control" id="Nombre de usuario" />                    
+            <!--usuario-->
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Usuario</label>
+                <input asp-for="IdUsu" class="form-control" id="formGroupExampleInput2" placeholder="Usuario">
                 <span asp-validation-for="IdUsu" class="text-danger"></span>
-                <i></i>
-                </div>
-                <!--Contraseña-->
-                <div class="inputBox">
-                    <input asp-for="ContraUsu" type="text" class="form-control" id="Contraseña usuario" />
-                    <span asp-validation-for="ContraUsu" class="text-danger"></span>
-                    <i></i>
-                </div>
-        
+            </div>
+            <!--contraseña-->
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Contraseña</label>
+                <input asp-for="ContraUsu" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña">
+                <span asp-validation-for="ContraUsu" class="text-danger"></span>
+            </div>
                 <!--BOTON-->
             <input type="submit" style="--clr:#fbff00" value="Crear" aria-hidden="true">
 

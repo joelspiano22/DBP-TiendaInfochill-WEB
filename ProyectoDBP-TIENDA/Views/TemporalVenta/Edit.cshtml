@@ -7,12 +7,44 @@
 <head>
     <link rel="stylesheet" href="~/css/Formulario.css" />
 </head>
-<h1>EDITAR PRODUCTO</h1>
+<h1>EDITAR PRODUCTO DE CARRITO</h1>
 <html>
 <head>
     <link rel="stylesheet" href="~/css/Formulario.css" />
 </head>
 <body>
-    
+    <form asp-asp-controller="Producto" asp-action="EditDetails" method="post">
+        <div class="form-group">
+            <input asp-for="IdPro" class="form-control" id="formGroupExampleInput" placeholder="Id" type="hidden" readonly>
+            <span asp-validation-for="IdPro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Descripcion</label>
+            <input asp-for="DesPro" class="form-control" id="formGroupExampleInput2" placeholder="Descripcion" readonly>
+            <span asp-validation-for="DesPro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Precio del producto</label>
+            <input asp-for="PrePro" class="form-control" id="formGroupExampleInput2" placeholder="Precio" readonly>
+            <span asp-validation-for="PrePro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Stock actual</label>
+            <input asp-for="StkAct" class="form-control" id="formGroupExampleInput2" placeholder="Stock actual" readonly>
+            <span asp-validation-for="StkAct" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Cantidad</label>
+            <input asp-for="cantidad" class="form-control" id="formGroupExampleInput2" placeholder="Categoria de producto" >
+            <span asp-validation-for="cantidad" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="editar" data-toggle="modal" data-target="#exampleModal">Modificar</button>
+        </div>
+    </form>
 </body>
 </html>

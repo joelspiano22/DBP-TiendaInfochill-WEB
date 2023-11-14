@@ -5,11 +5,21 @@ namespace ProyectoDBP_TIENDA.Models;
 
 public partial class TbUsuario
 {
+    public int CodUsu { get; set; }
+
     public string IdUsu { get; set; } = null!;
 
-    public string? ContraUsu { get; set; }
+    public string ContraUsu { get; set; } = null!;
 
-    public virtual ICollection<TbCliente> TbClientes { get; set; } = new List<TbCliente>();
+    public string? NomCli { get; set; }
 
-    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
+    public string? ApeCli { get; set; }
+
+    public string? DniCli { get; set; }
+
+    public string TlfCli { get; set; } = null!;
+
+    public string? CorreoCli { get; set; }
+
+    public virtual ICollection<TbFactura> TbFacturas { get; set; } = new List<TbFactura>();
 }

@@ -14,6 +14,4 @@ public partial class TbProveedor
     public string? TlfProveedor { get; set; }
 
     public string RepVenta { get; set; } = null!;
-
-    public virtual ICollection<TbOrdenCompra> TbOrdenCompras { get; set; } = new List<TbOrdenCompra>();
 }

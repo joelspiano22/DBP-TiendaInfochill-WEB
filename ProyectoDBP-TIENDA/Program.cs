@@ -14,9 +14,9 @@ builder.Services.Add(new ServiceDescriptor(typeof(IAdmin), new AdminRepository()
 builder.Services.Add(new ServiceDescriptor(typeof(IUsuario), new UsuarioRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProducto), new ProductoRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRepository()));
-builder.Services.Add(new ServiceDescriptor(typeof(ICliente), new ClienteRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(ITemporalVenta), new TemporalVentaRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IDetalleFactura), new DetalleFacturaRepository()));
+builder.Services.Add(new ServiceDescriptor(typeof(IFactura), new FacturaRepository()));
 
 
 //builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));
@@ -40,6 +40,6 @@ app.UseAuthorization();
 app.UseSession();   
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Usuario}/{action=Index}/{id?}");
+    pattern: "{controller=Producto}/{action=ProductoPrincipal}/{id?}");
 
 app.Run();

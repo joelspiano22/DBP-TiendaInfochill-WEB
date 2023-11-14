@@ -2,8 +2,8 @@
 
 namespace ProyectoDBP_TIENDA.Service.Interface
 {
-    public interface IDetalleFactura
+    public interface IFactura
     {
-        IEnumerable<TbDetalleFactura> GetAllDetalleFacturas();
+        IEnumerable<TbFactura> GetAllFactura();
     }
 }

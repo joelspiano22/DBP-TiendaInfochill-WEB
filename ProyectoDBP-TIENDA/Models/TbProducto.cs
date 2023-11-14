@@ -16,8 +16,4 @@ public partial class TbProducto
     public int StkMin { get; set; }
 
     public string? CatePro { get; set; }
-
-    public virtual ICollection<TbDetalleCompra> TbDetalleCompras { get; set; } = new List<TbDetalleCompra>();
-
-    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
 }

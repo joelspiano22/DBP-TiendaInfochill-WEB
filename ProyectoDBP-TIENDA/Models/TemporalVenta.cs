@@ -7,5 +7,7 @@
         public double PrePro { get; set; }
         public int StkAct { get; set; }
         public int cantidad { get; set; }
+        public virtual ICollection<TbFactura> TbFacturas { get; set; } = new List<TbFactura>();
+        public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
     }
 }

@@ -10,44 +10,45 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         {
             _temporalVentaList.Add(temporalVenta);
         }
-
         public void Delete(int id)
         {
-            var obj = (from temp in bdChill.TbProductos
-                       where temp.IdPro == id
-                       select temp).Single();
+            var obj = _temporalVentaList.SingleOrDefault(temp => temp.IdPro == id);
 
-            bdChill.TbProductos.Remove(obj);//delete from <tabla> where <campo>=id
-            bdChill.SaveChanges();
+            if (obj != null)
+            {
+                _temporalVentaList.Remove(obj);
+              
+            }
         }
 
-        
+
         public IEnumerable<TemporalVenta> GetAllTemporarySale()
         {
             return _temporalVentaList;
         }
 
-        public TbProducto GetProducto(int id)
+        public TemporalVenta GetProducto(int id)
         {
-            var obj = (from temp in bdChill.TbProductos
-                       where temp.IdPro == id
-                       select temp).Single();
+            var obj = _temporalVentaList.SingleOrDefault(temp => temp.IdPro == id);
             return obj;
         }
-
-        public void Update(TbProducto productoModi)
+        public void Update(TemporalVenta productoModi)
         {
-            var objModificado = (from temp in bdChill.TbProductos
-                                 where temp.IdPro == productoModi.IdPro
-                                 select temp).FirstOrDefault();
+            // Buscar el objeto en la colección en memoria (TemporalVenta)
+            var objModificado = _temporalVentaList.SingleOrDefault(temp => temp.IdPro == productoModi.IdPro);
+
             if (objModificado != null)
             {
+                // Actualizar propiedades en memoria
                 objModificado.IdPro = productoModi.IdPro;
                 objModificado.DesPro = productoModi.DesPro;
                 objModificado.PrePro = productoModi.PrePro;
                 objModificado.StkAct = productoModi.StkAct;
-                bdChill.SaveChanges();
+                objModificado.cantidad = productoModi.cantidad;
+
+                // No necesitas guardar cambios en la base de datos ya que estás trabajando en memoria.
             }
         }
+
     }
 }

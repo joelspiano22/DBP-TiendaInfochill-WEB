@@ -41,7 +41,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View();
         }
-
+        //CREAR CONTRASEÑA
         [Route("usu/Edit/{cod}")]
         public IActionResult Edit(string cod)
         {
@@ -52,10 +52,10 @@ namespace ProyectoDBP_TIENDA.Controllers
             _usuario.Update(tbUsu);
             return RedirectToAction("Index");
         }
+
         //Valida cuando se crea contra
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
-
             var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
             if (objUsuario != null)
             {
@@ -68,7 +68,6 @@ namespace ProyectoDBP_TIENDA.Controllers
             } 
         }
 
-
         /*---MANTENIMIENTOS-----------------------------------------------------------------*/
         public IActionResult Agregar()
         {
@@ -78,6 +77,16 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
 
             _usuario.Add(usuario);
+            return RedirectToAction("Listar");
+        }
+        //EDITAR
+        public IActionResult EditUsuario(string cod)
+        {
+            return View(_usuario.GetUsuarioEditar(cod));
+        }
+        public IActionResult EditDetailsUsuario(TbUsuario tbUsu)
+        {
+            _usuario.UpdateUsuario(tbUsu);
             return RedirectToAction("Listar");
         }
 

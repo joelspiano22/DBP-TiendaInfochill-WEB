@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System;
 using ProyectoDBP_TIENDA.Service.Repository;
+using Newtonsoft.Json;
 
 namespace ProyectoDBP_TIENDA.Controllers
 {
@@ -81,7 +82,18 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         public IActionResult ProductoPrincipal()
         {
-            return View(obj.GetAllProductos());
+            var objSesion = HttpContext.Session.GetString("sesionUsuario");
+            if (objSesion != null)
+            {
+                //Deserializar el objeto
+                var ObjSesionUsuario = JsonConvert.DeserializeObject<TbUsuario>
+                                 (HttpContext.Session.GetString("sesionUsuario"));
+                return View(obj.GetAllProductos());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
         }
 
         public IActionResult Nosotros()

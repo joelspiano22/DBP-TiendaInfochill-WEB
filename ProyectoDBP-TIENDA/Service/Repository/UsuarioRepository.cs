@@ -55,6 +55,13 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                        select tusu).Single();
             return obj;
         }
+        public TbUsuario GetUsuarioEditar(string id)
+        {
+            var obj = (from tusu in bdChill.TbUsuarios
+                       where tusu.IdUsu == id
+                       select tusu).Single();
+            return obj;
+        }
 
         //actualiza
         public void Update(TbUsuario usuModificado)
@@ -70,7 +77,24 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 bdChill.SaveChanges();
             }
         }
+        public void UpdateUsuario(TbUsuario usuModificado)
+        {
+            var objAModificado = (from tusu in bdChill.TbUsuarios
+                                  where tusu.IdUsu == usuModificado.IdUsu
+                                  select tusu).FirstOrDefault();
+            if (objAModificado != null)
+            {
+                objAModificado.IdUsu = usuModificado.IdUsu;
+                objAModificado.ContraUsu = usuModificado.ContraUsu;
+                objAModificado.NomCli = usuModificado.NomCli;
+                objAModificado.ApeCli = usuModificado.ApeCli;
+                objAModificado.DniCli = usuModificado.DniCli;
+                objAModificado.TlfCli = usuModificado.TlfCli;
+                objAModificado.CorreoCli = usuModificado.CorreoCli;
 
+                bdChill.SaveChanges();
+            }
+        }
 
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida Idusu CREADO

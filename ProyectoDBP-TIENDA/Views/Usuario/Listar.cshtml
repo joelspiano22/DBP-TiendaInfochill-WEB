@@ -19,7 +19,13 @@
             <tr>
                 <td scope="col">Codigo Cliente</td>
                 <td scope="col">Contraseña</td>
-
+                <td scope="col">Nombre</td>
+                <td scope="col">Apellido</td>
+                <td scope="col">Dni</td>
+                <td scope="col">Telefono</td>
+                <td scope="col">Correo</td>
+                <td scope="col">Editar</td>
+                <td scope="col">Eliminar</td>
             </tr>
         </thead>
         <tbody id="myTable">
@@ -28,8 +34,12 @@
                 <tr>
                     <td>@item.IdUsu</td>
                     <td>@item.ContraUsu</td>
-
-                    <td><a asp-action="Edit" asp-route-id="@item.IdUsu" class="btn btn-primary m-2">Editar</a></td>
+                    <td>@item.NomCli</td>
+                    <td>@item.ApeCli</td>
+                    <td>@item.DniCli</td>
+                    <td>@item.TlfCli</td>
+                        <td>@item.CorreoCli</td>
+                    <td><a asp-action="EditUsuario" asp-route-id="@item.IdUsu"class="btn btn-primary m-2">Editar</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.IdUsu" class="btn btn-primary m-2">Eliminar</a></td>
                 </tr>
             }

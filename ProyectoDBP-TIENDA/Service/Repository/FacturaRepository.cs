@@ -3,13 +3,13 @@ using ProyectoDBP_TIENDA.Service.Interface;
 
 namespace ProyectoDBP_TIENDA.Service.Repository
 {
-    public class DetalleFacturaRepository : IDetalleFactura
+    public class FacturaRepository : IFactura
     {
         private BdInfochill bdChill = new BdInfochill();
 
-        public IEnumerable<TbDetalleFactura> GetAllDetalleFacturas()
+        public IEnumerable<TbFactura> GetAllFactura()
         {
-            return bdChill.TbDetalleFacturas.ToList();
+            return bdChill.TbFacturas.ToList();
         }
     }
 }

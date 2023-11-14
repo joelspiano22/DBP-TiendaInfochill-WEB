@@ -39,7 +39,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(_temporalVenta.GetProducto(cod));
         }
-        public IActionResult EditDetails(TbProducto producto)
+        public IActionResult EditDetails(TemporalVenta producto)
         {
             _temporalVenta.Update(producto);
             return RedirectToAction("VerCarrito");
