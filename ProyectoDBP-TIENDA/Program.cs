@@ -17,6 +17,9 @@ builder.Services.Add(new ServiceDescriptor(typeof(IProveedores), new ProveedorRe
 builder.Services.Add(new ServiceDescriptor(typeof(ITemporalVenta), new TemporalVentaRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IDetalleFactura), new DetalleFacturaRepository()));
 builder.Services.Add(new ServiceDescriptor(typeof(IFactura), new FacturaRepository()));
+builder.Services.Add(new ServiceDescriptor(typeof(IRelacionesFac), new RelacionFac()));
+
+
 
 
 //builder.Services.Add(new ServiceDescriptor(typeof(ICarrito), new CarritoRepository()));

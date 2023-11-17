@@ -11,7 +11,7 @@ public partial class TbDetalleFactura
 
     public int CanVen { get; set; }
 
-    public decimal PreVen { get; set; }
+    public double PreVen { get; set; }
 
     public virtual TbFactura IdFacNavigation { get; set; } = null!;
 

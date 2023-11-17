@@ -12,4 +12,6 @@ public partial class TbFactura
     public DateTime FechaReg { get; set; }
 
     public virtual TbUsuario CodUsuNavigation { get; set; } = null!;
+
+    public virtual TbDetalleFactura? TbDetalleFactura { get; set; }
 }
