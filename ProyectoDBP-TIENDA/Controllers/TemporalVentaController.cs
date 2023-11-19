@@ -16,8 +16,8 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             
             _temporalVenta = temporal;
-            this._facturaRepository = factura;
-            this._detalleFacturaRepository = detalle;
+            _facturaRepository = factura;
+            _detalleFacturaRepository = detalle;
         }
        public IActionResult Index(TemporalVenta temporal)
        {
@@ -33,29 +33,49 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View("DetalleFactura", "Index");
         }
-        public IActionResult Operacion(int id)
+        public IActionResult Operacion()
         {
-            //ViewBag.ListaDeFactura = _facturaRepository.GetAllFactura();
-            //ViewBag.ListaDetalleFacturas = _detalleFacturaRepository.GetAllDetalleFacturas();
+            var objSesion = HttpContext.Session.GetString("sesionUsuario");
 
-
-            
-            TbFactura factura = new TbFactura();
-            TbDetalleFactura detalleFactura = new TbDetalleFactura()
+            if (objSesion != null)
             {
-                IdFacNavigation = factura // Set the correct IdFac for the foreign key
-                                   // Set other properties
-            };
+                // Deserializar el objeto
+                var objSesionUsuario = JsonConvert.DeserializeObject<TbUsuario>(objSesion);
 
-            // Populate factura and detalleFactura properties from your temporal data
+                // Obtener el código de usuario
+                int codUsuario = objSesionUsuario.CodUsu;
 
-            _facturaRepository.Add(factura);
-            _detalleFacturaRepository.Add(detalleFactura);
+                // Crear una nueva factura asociada al usuario
+                TbFactura factura = _facturaRepository.CrearFactura(codUsuario);
+                // Obtener los productos del carrito desde la tabla temporal
+                List<TemporalVenta> productosEnCarrito = _temporalVenta.GetAllTemporarySale().ToList();
 
-            // Redirect or perform any other action after saving data
-            return RedirectToAction("ProductoPrincipal", "Producto");
 
+            // Iterar sobre los productos en el carrito y crear los detalles de la factura
+            foreach (var producto in productosEnCarrito)
+            {
+                TbDetalleFactura detalleFactura = new TbDetalleFactura
+                {
+                    IdFac = factura.IdFac,
+                    IdPro = producto.IdPro,
+                    CanVen = producto.cantidad,
+                    PreVen = producto.PrePro
+                };
+
+                _detalleFacturaRepository.CrearDetalleFactura(detalleFactura);
+            }
+
+            // Limpiar la tabla temporal (opcional, dependiendo de tus requisitos)
+            //LimpiarTablaTemporal();
+
+            return RedirectToAction("ProductoPrincipal", "Producto"); // Redirigir a la página principal o a donde sea necesario
+            }
+            else
+            {
+                return RedirectToAction("Index", "Usuario");
+            }
         }
+
 
         //EDIT
         [Route("TemporalVenta/Edit/{cod}")]

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProyectoDBP_TIENDA.Models;
 using ProyectoDBP_TIENDA.Service.Interface;
 
@@ -33,7 +34,19 @@ namespace ProyectoDBP_TIENDA.Service.Repository
         {
             return bdChill.TbFacturas.ToList();
         }
-        
+        public TbFactura CrearFactura(int codUsuario)
+        {       
+            TbFactura factura = new TbFactura
+            {
+                CodUsu = codUsuario,
+                FechaReg = DateTime.Now
+            };
+
+            bdChill.TbFacturas.Add(factura);
+            bdChill.SaveChanges();
+
+            return factura;
+        }
     }
 }
 

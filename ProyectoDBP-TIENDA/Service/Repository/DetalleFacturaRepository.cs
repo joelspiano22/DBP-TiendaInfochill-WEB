@@ -1,4 +1,5 @@
-﻿using ProyectoDBP_TIENDA.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProyectoDBP_TIENDA.Models;
 using ProyectoDBP_TIENDA.Service.Interface;
 
 namespace ProyectoDBP_TIENDA.Service.Repository
@@ -29,6 +30,11 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                        where Tdet.IdFac == id
                        select Tdet).Single();
             return obj;
+        }
+        public void CrearDetalleFactura(TbDetalleFactura detalleFactura)
+        {
+            bdChill.TbDetalleFacturas.Add(detalleFactura);
+            bdChill.SaveChanges();
         }
     }
 }

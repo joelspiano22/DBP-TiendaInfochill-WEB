@@ -13,5 +13,5 @@ public partial class TbFactura
 
     public virtual TbUsuario CodUsuNavigation { get; set; } = null!;
 
-    public virtual TbDetalleFactura? TbDetalleFactura { get; set; }
+    public virtual ICollection<TbDetalleFactura> TbDetalleFacturas { get; set; } = new List<TbDetalleFactura>();
 }

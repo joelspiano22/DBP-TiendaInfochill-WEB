@@ -7,6 +7,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         IEnumerable<TbDetalleFactura> GetAllDetalleFacturas();
         void Add(TbDetalleFactura detalleFactura); 
         TbDetalleFactura GetDetalle(int id);
+        void CrearDetalleFactura(TbDetalleFactura detalleFactura);
 
     }
 }
