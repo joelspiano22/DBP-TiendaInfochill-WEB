@@ -49,6 +49,10 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 // No necesitas guardar cambios en la base de datos ya que estás trabajando en memoria.
             }
         }
+        public TemporalVenta GetByProductId(int productId)
+        {
+            return _temporalVentaList.FirstOrDefault(item => item.IdPro == productId);
+        }
 
     }
 }

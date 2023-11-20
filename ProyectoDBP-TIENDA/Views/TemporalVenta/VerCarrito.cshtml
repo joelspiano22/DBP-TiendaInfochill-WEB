@@ -20,6 +20,7 @@
                 <td scope="col">Precio</td>
                 <td scope="col">Stock</td>
                 <td scope="col">Cantidad seleccionada</td>
+                <td scope="col">Total</td>
                 <td scope="col">Editar</td>
                 <td scope="col">Eliminar</td>
             </tr>
@@ -34,12 +35,15 @@
                         <td>@item.PrePro</td>
                         <td>@item.StkAct</td>
                         <td>@item.cantidad</td>
+                    <td>@(item.PrePro * item.cantidad)</td>
                     <td><a asp-action="Edit" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Editar</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.IdPro" class="btn btn-primary m-2">Eliminar</a></td>
                 </tr>
                 }
         </tbody>
     </table>
+    <h2>Total a Pagar: $@(Model.Sum(item => item.PrePro * item.cantidad))</h2>
+    <p>Gracias por su compra.</p>
     <a asp-action="Operacion" class="btn btn-primary m-2">Pagar</a>
 
 </body>

@@ -8,5 +8,6 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         void Update(TemporalVenta producto);
         void Delete(int id);
         TemporalVenta GetProducto(int id);
+        TemporalVenta GetByProductId(int productId);
     }
 }

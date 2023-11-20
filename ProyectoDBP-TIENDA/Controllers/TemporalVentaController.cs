@@ -21,8 +21,16 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
        public IActionResult Index(TemporalVenta temporal)
        {
-            _temporalVenta.add(temporal);
-
+            
+            var existingItem = _temporalVenta.GetByProductId(temporal.IdPro);
+            if (existingItem != null)
+            {
+                existingItem.cantidad += temporal.cantidad;
+            }
+            else
+            {
+                _temporalVenta.add(temporal);
+            }
             return RedirectToAction("ProductoPrincipal", "Producto");
        }
         public IActionResult VerCarrito()
@@ -33,6 +41,8 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View("DetalleFactura", "Index");
         }
+
+
         public IActionResult Operacion()
         {
             var objSesion = HttpContext.Session.GetString("sesionUsuario");
@@ -51,24 +61,23 @@ namespace ProyectoDBP_TIENDA.Controllers
                 List<TemporalVenta> productosEnCarrito = _temporalVenta.GetAllTemporarySale().ToList();
 
 
-            // Iterar sobre los productos en el carrito y crear los detalles de la factura
-            foreach (var producto in productosEnCarrito)
-            {
-                TbDetalleFactura detalleFactura = new TbDetalleFactura
+                // Iterar sobre los productos en el carrito y crear los detalles de la factura
+                foreach (var producto in productosEnCarrito)
                 {
-                    IdFac = factura.IdFac,
-                    IdPro = producto.IdPro,
-                    CanVen = producto.cantidad,
-                    PreVen = producto.PrePro
-                };
+                    TbDetalleFactura detalleFactura = new TbDetalleFactura
+                    {
+                        IdFac = factura.IdFac,
+                        IdPro = producto.IdPro,
+                        CanVen = producto.cantidad,
+                        PreVen = producto.PrePro
+                    };
 
-                _detalleFacturaRepository.CrearDetalleFactura(detalleFactura);
-            }
+                    _detalleFacturaRepository.CrearDetalleFactura(detalleFactura);
 
-            // Limpiar la tabla temporal (opcional, dependiendo de tus requisitos)
-            //LimpiarTablaTemporal();
+                }
 
-            return RedirectToAction("ProductoPrincipal", "Producto"); // Redirigir a la página principal o a donde sea necesario
+                return RedirectToAction("ProductoPrincipal", "Producto");
+
             }
             else
             {
@@ -100,16 +109,3 @@ namespace ProyectoDBP_TIENDA.Controllers
     }
 }
 
-
-/*if(_facturaRepository.IdFac != null)
-{
-    _facturaRepository.IdFac = Idfac + 1;
-    _facturaRepository.FechaReg = DateTime.Now;
-    _facturaRepository.IdUsu = CodUsuNavigation;
-}
-else
-{
-    _facturaRepository.IdFac = 1;
-    _facturaRepository.FechaReg = DateTime.Now;
-    _facturaRepository.IdUsu = CodUsuNavigation;
-}*/
