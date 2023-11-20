@@ -39,11 +39,13 @@ namespace ProyectoDBP_TIENDA.Controllers
                 return View("Edit");
             }
         }
+
         [Route("usu/ValidarCodigo")]
         public IActionResult ValidarCodigo()
         {
             return View();
         }
+
         //CREAR CONTRASEÑA
         [Route("usu/Edit")]
         public IActionResult Edit(string cod)
@@ -86,19 +88,8 @@ namespace ProyectoDBP_TIENDA.Controllers
             _usuario.Add(usuario);
             return RedirectToAction("Listar");
         }
-        //EDITAR
-        [Route("usu/EditUsuario")]
-        public IActionResult EditUsuario(string cod)
-        {
-            return View(_usuario.GetUsuarioEditar(cod));
-        }
-        [Route("usu/EditDetailsUsu")]
-        public IActionResult EditDetailsUsuario(TbUsuario tbUsu)
-        {
-            _usuario.UpdateUsuario(tbUsu);
-            return RedirectToAction("Listar");
-        }
-
+        
+        
         //LISTAR
         [Route("usu/List")]
         public IActionResult Listar()

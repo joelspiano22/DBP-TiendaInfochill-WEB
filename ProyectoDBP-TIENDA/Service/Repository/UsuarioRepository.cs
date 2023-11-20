@@ -24,19 +24,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 Console.WriteLine(e.Message, "");
             }
         }
-        public void AddContra(TbUsuario usuario)
-        {
-            var usu= usuario.ContraUsu;
-            try
-            {
-                bdChill.TbUsuarios.Add(usuario);
-                bdChill.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message, "existe, no puede crear contraseña");
-            }
-        }
+       
         //eliminar
         public void Delete(string id)
         {

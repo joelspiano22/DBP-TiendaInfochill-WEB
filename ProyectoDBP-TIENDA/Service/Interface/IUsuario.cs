@@ -11,9 +11,7 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         void UpdateUsuario(TbUsuario usuario);
         void Delete(string id);
         TbUsuario GetUsuario(string id);
-        TbUsuario GetUsuarioEditar(string id);
-        void AddContra(TbUsuario usuario);  
-        //si contraseña/index
+
         TbUsuario GetValidarUsuarioCreado(TbUsuario usuario);
 
         //no contraseña
