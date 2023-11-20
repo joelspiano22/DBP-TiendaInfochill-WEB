@@ -42,7 +42,12 @@
 
         <div class="form-group">
             <label for="formGroupExampleInput2">Categoria de producto</label>
-            <input asp-for="CatePro" class="form-control" id="formGroupExampleInput2" placeholder="Categoria de producto">
+            <select asp-for="CatePro" class="form-control" id="formGroupExampleInput2">
+                <option value="Bebidas">Bebidas</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Postres">Postres</option>
+                <option value="Fast Food">Fast Food</option>
+            </select>
             <span asp-validation-for="CatePro" class="text-danger"></span>
         </div>
 

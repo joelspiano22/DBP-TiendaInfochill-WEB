@@ -58,7 +58,10 @@
             <!--estado-->
             <div class="form-group">
                 <label for="formGroupExampleInput2">Estado</label>
-                <input asp-for="Estado" class="form-control" id="formGroupExampleInput2" placeholder="Estado">
+                <select asp-for="Estado" class="form-control" id="formGroupExampleInput2">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="RETIRADO">RETIRADO</option>
+                </select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <!--BOTON-->
