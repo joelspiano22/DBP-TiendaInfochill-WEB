@@ -16,21 +16,23 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             obj = productoObj;
         }
+        [Route("producto/Index")]
         public IActionResult Index(TbProducto producto)
         {
            return View();
             //return View();
         }
+        [Route("producto/Carrito")]
         public IActionResult Carrito()
         {
             return View();
         }
-
+        [Route("producto/IndexProd")]
         public IActionResult IndexProd()
         {
             return View(obj.GetAllProductos());
         }
-        //[Route("producto/Comprar")]
+        [Route("producto/Comprar")]
         public IActionResult Comprar(int id)
         {
             ViewData["codigo"] = obj.GetProducto(id).IdPro;
@@ -41,14 +43,14 @@ namespace ProyectoDBP_TIENDA.Controllers
 
             return View();
         }
-
+       
         [Route("producto/listar")]
         public IActionResult Listar()
         {
             return View(obj.GetAllProductos());
         }
 
-        //grabados
+        [Route("producto/ADD")]
         public IActionResult Agregar() 
         {
             return View();  
@@ -73,13 +75,13 @@ namespace ProyectoDBP_TIENDA.Controllers
             obj.Delete(cod);
             return RedirectToAction("Listar");
         }
-
+        [Route("producto/EditDetails")]
         public IActionResult EditDetails(TbProducto tbProducto)
         {
             obj.Update(tbProducto);
             return RedirectToAction("Listar");
         }
-
+        [Route("producto/ProductoPrincipal")]
         public IActionResult ProductoPrincipal()
         {
             var objSesion = HttpContext.Session.GetString("sesionUsuario");
@@ -101,12 +103,12 @@ namespace ProyectoDBP_TIENDA.Controllers
                 return RedirectToAction("Index", "Usuario");
             }
         }
-
+        [Route("producto/Nosotros")]
         public IActionResult Nosotros()
         {
             return View();
         }
-
+        [Route("producto/Terms&Conditions")]
         public IActionResult TerminosYCondiciones()
         {
             return View();

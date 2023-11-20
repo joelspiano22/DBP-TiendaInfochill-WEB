@@ -12,34 +12,42 @@ namespace ProyectoDBP_TIENDA.Controllers
         public AdminController(IAdmin adminObj) {
             objAdmin = adminObj;
         }
+        [Route("admin/Index")]
         public IActionResult Index()
         {
             return View();
         }
+        [Route("admin/VistaCliente")]
         public IActionResult vistaClientes() {
             return View();
         }
+        [Route("admin/VistaCliente")]
         public IActionResult vistaProductos()
         {
             return View();
         }
+        [Route("admin/VistaProveedor")]
         public IActionResult vistaProveedores()
         {
             return View();
         }
+        [Route("admin/VistaUsuario")]
         public IActionResult vistaUsuario()
         {
             return View();
         }
+        [Route("admin/VistaDetalleFactura")]
         public IActionResult vistaDetalleFactura()
         {
             return View();
         }
+        [Route("admin/Login")]
         public IActionResult Login()  
         {
             return View();
         }
         /*---Validar-----------------------------------------------------------------*/
+        [Route("admin/Validar")]
         public IActionResult Validar(TbAdmin admin)
         {
             var Objadmin = objAdmin.Validar(admin); // Busca el usuario en la base de datos 
