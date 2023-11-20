@@ -42,7 +42,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View();
         }
         //CREAR CONTRASEÑA
-        [Route("usu/Edit/{cod}")]
+        [Route("usu/Edit")]
         public IActionResult Edit(string cod)
         {
             return View(_usuario.GetUsuario(cod));

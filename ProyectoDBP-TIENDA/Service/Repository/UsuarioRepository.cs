@@ -91,7 +91,7 @@ namespace ProyectoDBP_TIENDA.Service.Repository
                 objAModificado.DniCli = usuModificado.DniCli;
                 objAModificado.TlfCli = usuModificado.TlfCli;
                 objAModificado.CorreoCli = usuModificado.CorreoCli;
-
+                objAModificado.Estado = usuModificado.Estado;
                 bdChill.SaveChanges();
             }
         }

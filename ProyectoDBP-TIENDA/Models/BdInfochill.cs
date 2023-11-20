@@ -29,13 +29,13 @@ public partial class BdInfochill : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-IBRHU65\\SQLEXPRESS;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
+        => optionsBuilder.UseSqlServer("Data Source=JOELSPIANO\\SQLEXPRESS01;Initial Catalog=INFOCHILL;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TbAdmin>(entity =>
         {
-            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE577FAD198");
+            entity.HasKey(e => e.IdAdmin).HasName("PK__TB_ADMIN__B2C3ADE52799CEC6");
 
             entity.ToTable("TB_ADMIN");
 
@@ -52,7 +52,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbDetalleFactura>(entity =>
         {
-            entity.HasKey(e => e.IdDet).HasName("PK__TB_DETAL__3E41457F60DB33EB");
+            entity.HasKey(e => e.IdDet).HasName("PK__TB_DETAL__3E41457F13003D95");
 
             entity.ToTable("TB_DETALLE_FACTURA");
 
@@ -67,17 +67,17 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.IdFacNavigation).WithMany(p => p.TbDetalleFacturas)
                 .HasForeignKey(d => d.IdFac)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idFac__03F0984C");
+                .HasConstraintName("FK__TB_DETALL__idFac__59FA5E80");
 
             entity.HasOne(d => d.IdProNavigation).WithMany(p => p.TbDetalleFacturas)
                 .HasForeignKey(d => d.IdPro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_DETALL__idPro__04E4BC85");
+                .HasConstraintName("FK__TB_DETALL__idPro__5AEE82B9");
         });
 
         modelBuilder.Entity<TbFactura>(entity =>
         {
-            entity.HasKey(e => e.IdFac).HasName("PK__TB_FACTU__39C0459A0279403D");
+            entity.HasKey(e => e.IdFac).HasName("PK__TB_FACTU__39C0459A9C09A4AB");
 
             entity.ToTable("TB_FACTURA");
 
@@ -90,12 +90,12 @@ public partial class BdInfochill : DbContext
             entity.HasOne(d => d.CodUsuNavigation).WithMany(p => p.TbFacturas)
                 .HasForeignKey(d => d.CodUsu)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TB_FACTUR__codUs__01142BA1");
+                .HasConstraintName("FK__TB_FACTUR__codUs__571DF1D5");
         });
 
         modelBuilder.Entity<TbProducto>(entity =>
         {
-            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27E30CB419");
+            entity.HasKey(e => e.IdPro).HasName("PK__TB_PRODU__3D795B27374DACC4");
 
             entity.ToTable("TB_PRODUCTO");
 
@@ -117,7 +117,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbProveedor>(entity =>
         {
-            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB168E56C3");
+            entity.HasKey(e => e.CodProveedor).HasName("PK__TB_PROVE__26E566FB8F3241D1");
 
             entity.ToTable("TB_PROVEEDOR");
 
@@ -143,7 +143,7 @@ public partial class BdInfochill : DbContext
 
         modelBuilder.Entity<TbUsuario>(entity =>
         {
-            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B80588170BA814E");
+            entity.HasKey(e => e.CodUsu).HasName("PK__TB_USUAR__9B805881139BAC58");
 
             entity.ToTable("TB_USUARIO");
 
@@ -166,6 +166,11 @@ public partial class BdInfochill : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("dniCli");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength()
+                .HasColumnName("estado");
             entity.Property(e => e.IdUsu)
                 .HasMaxLength(20)
                 .IsUnicode(false)

@@ -21,5 +21,7 @@ public partial class TbUsuario
 
     public string? CorreoCli { get; set; }
 
+    public string? Estado { get; set; }
+
     public virtual ICollection<TbFactura> TbFacturas { get; set; } = new List<TbFactura>();
 }
