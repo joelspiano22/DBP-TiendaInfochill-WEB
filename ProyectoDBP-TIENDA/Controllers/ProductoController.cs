@@ -88,6 +88,12 @@ namespace ProyectoDBP_TIENDA.Controllers
                 //Deserializar el objeto
                 var ObjSesionUsuario = JsonConvert.DeserializeObject<TbUsuario>
                                  (HttpContext.Session.GetString("sesionUsuario"));
+
+                // Obtener el nombre y apellido del usuario
+                string nombreCompleto = $"{ObjSesionUsuario.NomCli} {ObjSesionUsuario.ApeCli}";
+
+                // Pasar el nombre completo como modelo adicional
+                ViewData["NombreCompleto"] = nombreCompleto;
                 return View(obj.GetAllProductos());
             }
             else
