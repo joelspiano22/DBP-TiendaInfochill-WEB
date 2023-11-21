@@ -12,26 +12,25 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             objP = proveedorObj;
         }
-        [Route("proveedor/Index")]
+      
         public IActionResult Index()
         {
             return View();
         }
 
 
-        [Route("proveedor/listar")]
+  
         public IActionResult Listar()
         {
             return View(objP.GetAllProveedores());
         }
         //grabados
-        [Route("proveedor/ADD")]
+        
         public IActionResult Agregar() 
         {
             return View();
         }
-        [Route("proveedor/Grabar")]
-        [Route("proveedor/grabar")]
+
         public IActionResult Grabar(TbProveedor provee)
         {
             objP.Add(provee);
@@ -45,7 +44,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             return View(objP.GetProveedor(cod));
         }
-        [Route("proveedor/EditDetails")]
+
         public IActionResult EditDetails(TbProveedor tbprovee)
         {
             objP.Update(tbprovee);

@@ -19,7 +19,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             _facturaRepository = factura;
             _detalleFacturaRepository = detalle;
         }
-        [Route("TemporalVenta/Index")]
+     
         public IActionResult Index(TemporalVenta temporal)
        {
             
@@ -34,7 +34,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             }
             return RedirectToAction("ProductoPrincipal", "Producto");
        }
-        [Route("TemporalVenta/VerCarrito")]
+     
         public IActionResult VerCarrito()
         {
             return View(_temporalVenta.GetAllTemporarySale());
@@ -44,7 +44,7 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View("DetalleFactura", "Index");
         }
 
-        [Route("TemporalVenta/Operacion")]
+   
         public IActionResult Operacion()
         {
             var objSesion = HttpContext.Session.GetString("sesionUsuario");
@@ -102,7 +102,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
 
         //DELETE
-        [Route("TemporalVenta/Delete/{cod}")]
+ 
         public IActionResult Delete(int cod)
         {
             _temporalVenta.Delete(cod);

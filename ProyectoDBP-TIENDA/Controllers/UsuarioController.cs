@@ -16,7 +16,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         {
             _usuario = usuario;
         }
-        [Route("usu/index")]
+
         public IActionResult Index()
         {
             return View();
@@ -24,7 +24,7 @@ namespace ProyectoDBP_TIENDA.Controllers
 
         //REGISTRAR
         //Cuando quiere crear contraseña, primero valida codAlum CREADO
-        [Route("usu/validar")]
+
         public IActionResult Validar(TbUsuario usuario)
         {
             var Objusuario = _usuario.GetValidarUsuario(usuario); // Busca el usuario en la base de datos 
@@ -40,19 +40,19 @@ namespace ProyectoDBP_TIENDA.Controllers
             }
         }
 
-        [Route("usu/ValidarCodigo")]
+
         public IActionResult ValidarCodigo()
         {
             return View();
         }
 
         //CREAR CONTRASEÑA
-        [Route("usu/Edit")]
+        [Route("usu/Edit/{cod}")]
         public IActionResult Edit(string cod)
         {
             return View(_usuario.GetUsuario(cod));
         }
-        [Route("usu/EditDetails")]
+
         public IActionResult EditDetails(TbUsuario tbUsu)
         {
             _usuario.Update(tbUsu);
@@ -60,7 +60,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
 
         //Valida cuando se crea contra
-        [Route("usu/ValidarCreado")]
+    
         public IActionResult ValidarCreado(TbUsuario usuario)
         {
             var objUsuario = _usuario.GetValidarUsuarioCreado(usuario);
@@ -76,12 +76,12 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
 
         /*---MANTENIMIENTOS-----------------------------------------------------------------*/
-        [Route("usu/ADD")]
+   
         public IActionResult Agregar()
         {
             return View();
         }
-        [Route("usu/Grabar")]
+     
         public IActionResult Grabar(TbUsuario usuario)
         {
 
@@ -91,7 +91,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         
         
         //LISTAR
-        [Route("usu/List")]
+
         public IActionResult Listar()
         {
             return View(_usuario.GetAllUsuario());
