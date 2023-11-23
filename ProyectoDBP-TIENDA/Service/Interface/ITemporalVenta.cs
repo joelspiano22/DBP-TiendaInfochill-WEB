@@ -12,5 +12,6 @@ namespace ProyectoDBP_TIENDA.Service.Interface
         void Delete(int id);
         TemporalVenta GetProducto(int cod);
         TemporalVenta GetByProductId(int productId);
+        void clear();
     }
 }

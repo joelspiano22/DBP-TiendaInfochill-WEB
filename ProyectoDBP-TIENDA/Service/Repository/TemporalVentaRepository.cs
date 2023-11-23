@@ -54,5 +54,10 @@ namespace ProyectoDBP_TIENDA.Service.Repository
             return _temporalVentaList.FirstOrDefault(item => item.IdPro == productId);
         }
 
+        public void clear()
+        {
+            _temporalVentaList.Clear();
+        }
+
     }
 }

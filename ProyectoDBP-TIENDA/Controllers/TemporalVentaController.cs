@@ -87,7 +87,7 @@ namespace ProyectoDBP_TIENDA.Controllers
                         return RedirectToAction("Error");
                     }
                 }
-
+                _temporalVenta.clear();
                 return RedirectToAction("ProductoPrincipal", "Producto");
             }
             else
