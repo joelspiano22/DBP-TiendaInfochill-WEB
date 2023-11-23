@@ -48,7 +48,6 @@ namespace ProyectoDBP_TIENDA.Service.Repository
 
                 // No necesitas guardar cambios en la base de datos ya que estás trabajando en memoria.
             }
-            bdChill.SaveChanges();
         }
         public TemporalVenta GetByProductId(int productId)
         {

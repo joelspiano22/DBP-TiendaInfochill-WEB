@@ -26,7 +26,6 @@
                 <td scope="col">Correo</td>
                 <td scope="col">Estado</td>
                 <td scope="col">Editar</td>
-                <td scope="col">Eliminar</td>
             </tr>
         </thead>
         <tbody id="myTable">
@@ -42,7 +41,6 @@
                     <td>@item.CorreoCli</td>
                     <td>@item.Estado</td>
                     <td><a asp-action="EditUsuario" asp-route-id="@item.IdUsu"class="btn btn-primary m-2">Editar</a></td>
-                    <td><a asp-action="Delete" asp-route-id="@item.IdUsu" class="btn btn-primary m-2">Eliminar</a></td>
                 </tr>
             }
             }
