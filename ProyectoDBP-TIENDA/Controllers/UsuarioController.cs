@@ -32,11 +32,11 @@ namespace ProyectoDBP_TIENDA.Controllers
             if (Objusuario.IdUsu == null)
             {
                 // Si el usuario no se encuentra en la base de datos index
-                return View("ValidarCodigo");
+                return RedirectToAction("ValidarCodigo");
             }
             else
             {
-                return View("Edit");
+                return  RedirectToAction("Edit");
             }
         }
 
@@ -47,8 +47,13 @@ namespace ProyectoDBP_TIENDA.Controllers
         }
 
         //CREAR CONTRASEÑA
-        [Route("usu/Edit/{cod}")]
+        
         public IActionResult Edit(string cod)
+        {
+            return View(_usuario.GetUsuario(cod));
+        }
+
+        public IActionResult EditUsuario(string cod)
         {
             return View(_usuario.GetUsuario(cod));
         }

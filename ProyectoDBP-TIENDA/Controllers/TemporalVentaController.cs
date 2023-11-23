@@ -9,15 +9,18 @@ namespace ProyectoDBP_TIENDA.Controllers
 {
     public class TemporalVentaController : Controller
     {
+        private BdInfochill bdChill = new BdInfochill();
         private readonly ITemporalVenta _temporalVenta;
         private readonly IFactura _facturaRepository;
         private readonly IDetalleFactura _detalleFacturaRepository;
-        public TemporalVentaController(ITemporalVenta temporal,IFactura factura, IDetalleFactura detalle)
+        private readonly IProducto _producto;
+        public TemporalVentaController(ITemporalVenta temporal,IFactura factura, IDetalleFactura detalle, IProducto producto)
         {
             
             _temporalVenta = temporal;
             _facturaRepository = factura;
             _detalleFacturaRepository = detalle;
+            _producto = producto;
         }
      
         public IActionResult Index(TemporalVenta temporal)
@@ -44,42 +47,48 @@ namespace ProyectoDBP_TIENDA.Controllers
             return View("DetalleFactura", "Index");
         }
 
-   
+
         public IActionResult Operacion()
         {
             var objSesion = HttpContext.Session.GetString("sesionUsuario");
 
             if (objSesion != null)
             {
-                // Deserializar el objeto
+
                 var objSesionUsuario = JsonConvert.DeserializeObject<TbUsuario>(objSesion);
 
-                // Obtener el código de usuario
                 int codUsuario = objSesionUsuario.CodUsu;
-
-                // Crear una nueva factura asociada al usuario
                 TbFactura factura = _facturaRepository.CrearFactura(codUsuario);
-                // Obtener los productos del carrito desde la tabla temporal
                 List<TemporalVenta> productosEnCarrito = _temporalVenta.GetAllTemporarySale().ToList();
 
-
-                // Iterar sobre los productos en el carrito y crear los detalles de la factura
-                foreach (var producto in productosEnCarrito)
+                foreach (var productoEnCarrito in productosEnCarrito)
                 {
-                    TbDetalleFactura detalleFactura = new TbDetalleFactura
+
+                    TbProducto producto = _producto.GetProducto(productoEnCarrito.IdPro);
+
+                    if (producto != null && producto.StkAct >= productoEnCarrito.cantidad)
                     {
-                        IdFac = factura.IdFac,
-                        IdPro = producto.IdPro,
-                        CanVen = producto.cantidad,
-                        PreVen = producto.PrePro
-                    };
+                        TbDetalleFactura detalleFactura = new TbDetalleFactura
+                        {
+                            IdFac = factura.IdFac,
+                            IdPro = productoEnCarrito.IdPro,
+                            CanVen = productoEnCarrito.cantidad,
+                            PreVen = productoEnCarrito.PrePro
+                        };
 
-                    _detalleFacturaRepository.CrearDetalleFactura(detalleFactura);
-
+                        producto.StkAct -= productoEnCarrito.cantidad;bdChill.SaveChanges();
+                        // Agregar el detalle de la factura a la base de datos
+                        _detalleFacturaRepository.CrearDetalleFactura(detalleFactura);
+                    }
+                    else
+                    {
+                        // Manejar el caso donde no hay suficiente stock
+                        // Puedes redirigir a una página de error o realizar alguna acción específica
+                        return RedirectToAction("Error");
+                    }
                 }
 
                 return RedirectToAction("ProductoPrincipal", "Producto");
-
             }
             else
             {
@@ -106,7 +115,7 @@ namespace ProyectoDBP_TIENDA.Controllers
         public IActionResult Delete(int cod)
         {
             _temporalVenta.Delete(cod);
-            return RedirectToAction("VerCarrito");
+            return RedirectToAction("VerCarrito","TemporalVenta");
         }
     }
 }
